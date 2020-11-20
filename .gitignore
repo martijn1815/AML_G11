@@ -1,1 +1,5 @@
 .vscode/settings.json
+.DS_Store
+final-project-food-recognition-challenge/sample.csv
+*.jpg
+final-project-food-recognition-challenge/train_labels.csv
