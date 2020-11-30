@@ -12,8 +12,7 @@ import pandas as pd
 import torch
 
 import os
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
+from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from skimage import io
 import torchvision
 import torchvision.transforms as transforms
@@ -51,33 +50,39 @@ class Net(nn.Module):
 
     def __init__(self):
         super(Net, self).__init__()
-        # 1 input image channel, 6 output channels, 3x3 square convolution
-        # kernel
-        self.conv1 = nn.Conv2d(3, 6, 3)
-        self.conv2 = nn.Conv2d(6, 16, 3)
-        # an affine operation: y = Wx + b
-        self.fc1 = nn.Linear(16 * 6 * 6, 120)  # 6*6 from image dimension
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 10)
+        self.conv1 = nn.Conv2d(3, 6, 5)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+
+        self.fc1 = nn.Linear(16*53*53, 1000)
+        self.fc2 = nn.Linear(1000, 120)
+        self.fc3 = nn.Linear(120, 81)
 
     def forward(self, x):
-        # Max pooling over a (2, 2) window
-        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
-        # If the size is a square you can only specify a single number
-        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
-        x = x.view(-1, self.num_flat_features(x))
+        x = self.pool(F.relu(self.conv1(x)))  # Layer1
+        x = self.pool(F.relu(self.conv2(x)))  # Layer2
+        x = x.view(-1, 16*53*53)
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
 
 
-    def num_flat_features(self, x):
-        size = x.size()[1:]  # all dimensions except the batch dimension
-        num_features = 1
-        for s in size:
-            num_features *= s
-        return num_features
+def get_conv2_shape(images):
+    """
+    Print the shape needed for the 1st linear layer
+    :param images: image tensor
+    """
+    conv1 = nn.Conv2d(3, 6, 5)
+    pool = nn.MaxPool2d(2, 2)
+    conv2 = nn.Conv2d(6, 16, 5)
+
+    x = conv1(images)
+    x = pool(x)
+    x = conv2(x)
+    x = pool(x)
+
+    print(x.shape)
 
 
 def pytorch_cnn_train():
@@ -85,57 +90,80 @@ def pytorch_cnn_train():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Hyperparameters:
-    batch_size = 32
+    batch_size = 4
+    num_epochs = 2
+    learning_rate = 0.001
     num_classes = 80
-    epochs = 2
 
     # Load Data:
     scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Scale(256),
-                                          transforms.RandomCrop(224),
-                                          transforms.ToTensor()])
+                                          transforms.Resize(256),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.5, 0.5, 0.5),
+                                                               (0.5, 0.5, 0.5))])
     train_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
 
     # Define CNN:
-    net = Net()
+    model = Net()
 
     # Define loss function and optimizer:
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+    optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 
     # Train network
-    for epoch in range(epochs):  # loop over the dataset multiple times
+    total_step = len(train_loader)
+    loss_list = []
+    acc_list = []
+    for epoch in range(num_epochs):  # loop over the dataset multiple times
+        for i, (images, labels) in enumerate(train_loader):
+            #print("Size:", images.shape, "Label:", labels)
+            #get_conv2_shape(images)
 
-        running_loss = 0.0
-        for i, data in enumerate(train_loader, 0):
-            # get the inputs; data is a list of [inputs, labels]
-            inputs, labels = data
+            images = images.to(device)
+            labels = labels.to(device)
 
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
+            # Forward pass
+            outputs = model(images)
             loss = criterion(outputs, labels)
+            loss_list.append(loss.item())
+
+            # Backward pass and optimization
+            optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:  # print every 2000 mini-batches
-                print('[%d, %5d] loss: %.3f' %
-                      (epoch + 1, i + 1, running_loss / 2000))
-                running_loss = 0.0
+            # Track the accuracy
+            total = labels.size(0)
+            _, predicted = torch.max(outputs.data, 1)
+            correct = (predicted == labels).sum().item()
+            acc_list.append(correct / total)
+
+            if (i + 1) % 100 == 0:
+                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Accuracy: {:.2f}%'
+                      .format(epoch + 1, num_epochs, i + 1, total_step, loss.item(),
+                             (correct / total) * 100))
 
     print('Finished Training')
 
     # Save trained model:
     PATH = './torch_cnn.pth'
-    torch.save(net.state_dict(), PATH)
+    torch.save(model.state_dict(), PATH)
 
 
-def pytorch_cnn_classify():
+def pytorch_cnn_test():
+    batch_size = 4
+    # Load Data:
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(256),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.5, 0.5, 0.5),
+                                                               (0.5, 0.5, 0.5))])
+    test_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
+    test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True)
+
     # Define CNN:
     net = Net()
 
@@ -143,12 +171,56 @@ def pytorch_cnn_classify():
     PATH = './torch_cnn.pth'
     net.load_state_dict(torch.load(PATH))
 
-    outputs = net(images)
-    _, predicted = torch.max(outputs, 1)
+    # Get Accuracy:
+    correct = 0
+    total = 0
+    with torch.no_grad():
+        for (images, labels) in test_loader:
+            outputs = net(images)
+            _, predicted = torch.max(outputs.data, 1)
+            total += labels.size(0)
+            correct += (predicted == labels).sum().item()
+    print('Accuracy of the network on all images: %d %%' % (100 * correct / total))
+
+
+def pytorch_cnn_classify():
+    batch_size = 1
+    # Load Data:
+    scale_transform = transforms.Compose([transforms.Resize(256),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.5, 0.5, 0.5),
+                                                               (0.5, 0.5, 0.5))])
+    test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
+    test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
+
+    # Define CNN:
+    net = Net()
+
+    # Load trained CNN:
+    PATH = './torch_cnn.pth'
+    net.load_state_dict(torch.load(PATH))
+
+    # Classify images:
+    list_pred = []
+    with torch.no_grad():
+        for i, (images, labels) in enumerate(test_loader, 0):
+            outputs = net(images)
+            _, predicted = torch.max(outputs.data, 1)
+            sample_fname, _ = test_loader.dataset.samples[i]
+            list_pred.append((sample_fname.split("/")[-1], predicted.item()))
+
+    list_pred = sorted(list_pred, key=lambda x: int(x[0][5:-4]))
+    with open("solution.csv", "w") as f:
+        f.write("img_name,label\n")
+        for item in list_pred:
+            f.write("{0},{1}\n".format(item[0], item[1]))
 
 
 def main(argv):
-    pytorch_cnn_train()
+    #pytorch_cnn_train()
+    #pytorch_cnn_test()
+    pytorch_cnn_classify()
 
 
 if __name__ == "__main__":
