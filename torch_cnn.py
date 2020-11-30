@@ -218,9 +218,9 @@ def pytorch_cnn_classify():
 
 
 def main(argv):
-    #pytorch_cnn_train()
+    pytorch_cnn_train()
     #pytorch_cnn_test()
-    pytorch_cnn_classify()
+    #pytorch_cnn_classify()
 
 
 if __name__ == "__main__":

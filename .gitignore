@@ -1,2 +1,3 @@
 .vscode/settings.json
 *.jpg
+torch_cnn.pth
