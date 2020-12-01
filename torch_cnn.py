@@ -90,20 +90,22 @@ def pytorch_cnn_train():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Hyperparameters:
-    batch_size = 4
-    num_epochs = 2
-    learning_rate = 0.001
+    batch_size = 10
+    num_epochs = 5
+    learning_rate = 0.005
     num_classes = 80
 
     # Load Data:
+    print("Loading data:", end=" ")
     scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(256),
+                                          transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
                                           transforms.Normalize((0.5, 0.5, 0.5),
                                                                (0.5, 0.5, 0.5))])
     train_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
     train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    print("Done")
 
     # Define CNN:
     model = Net()
@@ -113,6 +115,7 @@ def pytorch_cnn_train():
     optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 
     # Train network
+    print("Training CNN:")
     total_step = len(train_loader)
     loss_list = []
     acc_list = []
@@ -153,23 +156,27 @@ def pytorch_cnn_train():
 
 
 def pytorch_cnn_test():
-    batch_size = 4
+    batch_size = 10
     # Load Data:
+    print("Loading data:", end=" ")
     scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(256),
+                                          transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
                                           transforms.Normalize((0.5, 0.5, 0.5),
                                                                (0.5, 0.5, 0.5))])
     test_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True)
+    print("Done")
 
     # Define CNN:
     net = Net()
 
     # Load trained CNN:
+    print("Loading trained CNN:", end=" ")
     PATH = './torch_cnn.pth'
     net.load_state_dict(torch.load(PATH))
+    print("Done")
 
     # Get Accuracy:
     correct = 0
@@ -186,22 +193,27 @@ def pytorch_cnn_test():
 def pytorch_cnn_classify():
     batch_size = 1
     # Load Data:
-    scale_transform = transforms.Compose([transforms.Resize(256),
+    print("Loading data:", end=" ")
+    scale_transform = transforms.Compose([transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
                                           transforms.Normalize((0.5, 0.5, 0.5),
                                                                (0.5, 0.5, 0.5))])
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
+    print("Done")
 
     # Define CNN:
     net = Net()
 
     # Load trained CNN:
+    print("Loading trained CNN:", end=" ")
     PATH = './torch_cnn.pth'
     net.load_state_dict(torch.load(PATH))
+    print("Done")
 
     # Classify images:
+    print("Classifying images:", end=" ")
     list_pred = []
     with torch.no_grad():
         for i, (images, labels) in enumerate(test_loader, 0):
@@ -209,12 +221,15 @@ def pytorch_cnn_classify():
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
             list_pred.append((sample_fname.split("/")[-1], predicted.item()))
+    print("Done")
 
+    print("Writing predictions:", end=" ")
     list_pred = sorted(list_pred, key=lambda x: int(x[0][5:-4]))
     with open("solution.csv", "w") as f:
         f.write("img_name,label\n")
         for item in list_pred:
             f.write("{0},{1}\n".format(item[0], item[1]))
+    print("Done")
 
 
 def main(argv):
