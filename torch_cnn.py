@@ -54,16 +54,19 @@ class Net(nn.Module):
 
         self.pool = nn.MaxPool2d(2, 2)
 
-        self.fc1 = nn.Linear(16*53*53, 1000)
-        self.fc2 = nn.Linear(1000, 120)
-        self.fc3 = nn.Linear(120, 81)
+        self.dropout1 = nn.Dropout(p=0.5)
+        self.dropout2 = nn.Dropout(p=0.2)
+
+        self.fc1 = nn.Linear(16*53*53, 512)
+        self.fc2 = nn.Linear(512, 128)
+        self.fc3 = nn.Linear(128, 81)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))  # Layer1
         x = self.pool(F.relu(self.conv2(x)))  # Layer2
         x = x.view(-1, 16*53*53)
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
+        x = self.dropout1(F.relu(self.fc1(x)))
+        x = self.dropout2(F.relu(self.fc2(x)))
         x = self.fc3(x)
         return x
 
@@ -195,7 +198,6 @@ def pytorch_cnn_train():
                 model.train()
 
     print('Finished Training')
-    show_graph(train_losses, val_losses)
 
     # Save trained model:
     print("Saving model:", end=" ")
@@ -203,19 +205,17 @@ def pytorch_cnn_train():
     torch.save(model.state_dict(), PATH)
     print("Done")
 
+    show_graph(train_losses, val_losses)
+
 
 def pytorch_cnn_test(model_file="torch_cnn"):
     batch_size = 10
     # Load Data:
     print("Loading data:", end=" ")
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
-    test_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
-    test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True)
+    _, test_loader = load_train_validate_data('train_labels.csv',
+                                              'train_set/train_set',
+                                              batch_size,
+                                              valid_size=1000)
     print("Done")
 
     # Define CNN:
@@ -228,6 +228,7 @@ def pytorch_cnn_test(model_file="torch_cnn"):
     print("Done")
 
     # Get Accuracy:
+    print("Classifying test-set:", end=" ")
     correct = 0
     total = 0
     with torch.no_grad():
@@ -236,7 +237,8 @@ def pytorch_cnn_test(model_file="torch_cnn"):
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
-    print('Accuracy of the network on all images: %d %%' % (100 * correct / total))
+    print("Done")
+    print('Accuracy of the network on 1000 images: {}%'.format(100 * correct / total))
 
 
 def pytorch_cnn_classify(model_file="torch_cnn"):
