@@ -9,17 +9,17 @@ Based on pytorch tutorial: https://pytorch.org/tutorials/beginner/blitz/cifar10_
 
 import sys
 import pandas as pd
-import torch
-
 import os
-from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from skimage import io
+import numpy as np
+import matplotlib.pyplot as plt
+
+import torch
+from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 import torchvision
 import torchvision.transforms as transforms
-
 import torch.nn as nn
 import torch.nn.functional as F
-
 import torch.optim as optim
 
 
@@ -85,6 +85,37 @@ def get_conv2_shape(images):
     print(x.shape)
 
 
+def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(224),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.5, 0.5, 0.5),
+                                                               (0.5, 0.5, 0.5))])
+    data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
+
+    split = int(np.floor(valid_size))
+    indices = list(range(len(data_set)))
+    np.random.shuffle(indices)
+    train_idx, test_idx = indices[split:], indices[:split]
+
+    train_sampler = SubsetRandomSampler(train_idx)
+    test_sampler = SubsetRandomSampler(test_idx)
+
+    # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    train_loader = torch.utils.data.DataLoader(data_set, sampler=train_sampler, batch_size=batch_size)
+    val_loader = torch.utils.data.DataLoader(data_set, sampler=test_sampler, batch_size=batch_size)
+
+    return train_loader, val_loader
+
+
+def show_graph(train_losses, val_losses):
+    plt.plot(train_losses, label='Training loss')
+    plt.plot(val_losses, label='Validation loss')
+    plt.legend(frameon=False)
+    plt.show()
+
+
 def pytorch_cnn_train():
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -92,20 +123,15 @@ def pytorch_cnn_train():
 
     # Hyperparameters:
     batch_size = 10
-    num_epochs = 50
+    num_epochs = 5
     learning_rate = 0.005
     num_classes = 80
 
     # Load Data:
     print("Loading data:", end=" ")
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
-    train_set = DatasetTorch(csv_file='train_labels.csv', root_dir='train_set/train_set', transform=scale_transform)
-    train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    train_loader, val_loader = load_train_validate_data('train_labels.csv',
+                                                        'train_set/train_set',
+                                                        batch_size)
     print("Done")
 
     # Define CNN:
@@ -117,9 +143,12 @@ def pytorch_cnn_train():
 
     # Train network
     print("Training CNN:")
-    total_step = len(train_loader)
-    loss_list = []
-    acc_list = []
+    model.to(device)
+
+    running_loss = 0
+    print_every = 100
+    train_losses, val_losses = [], []
+
     for epoch in range(num_epochs):  # loop over the dataset multiple times
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
@@ -129,9 +158,9 @@ def pytorch_cnn_train():
             labels = labels.to(device)
 
             # Forward pass
-            outputs = model(images)
+            outputs = model.forward(images)
             loss = criterion(outputs, labels)
-            loss_list.append(loss.item())
+            running_loss += loss.item()
 
             # Backward pass and optimization
             optimizer.zero_grad()
@@ -139,17 +168,34 @@ def pytorch_cnn_train():
             optimizer.step()
 
             # Track the accuracy
-            total = labels.size(0)
-            _, predicted = torch.max(outputs.data, 1)
-            correct = (predicted == labels).sum().item()
-            acc_list.append(correct / total)
+            if (i + 1) % print_every == 0:
+                val_loss = 0
+                accuracy = 0
+                model.eval()
+                with torch.no_grad():
+                    for inputs, labels in val_loader:
+                        inputs, labels = inputs.to(device), labels.to(device)
+                        logps = model.forward(inputs)
+                        batch_loss = criterion(logps, labels)
+                        val_loss += batch_loss.item()
 
-            if (i + 1) % 100 == 0:
-                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Accuracy: {:.2f}%'
-                      .format(epoch + 1, num_epochs, i + 1, total_step, loss.item(),
-                             (correct / total) * 100))
+                        ps = torch.exp(logps)
+                        top_p, top_class = ps.topk(1, dim=1)
+                        equals = top_class == labels.view(*top_class.shape)
+                        accuracy += torch.mean(equals.type(torch.FloatTensor)).item()
+                train_losses.append(running_loss / len(train_loader))
+                val_losses.append(val_loss / len(val_loader))
+                print('Epoch [{}/{}], Step [{}/{}], Train loss: {:.4f}, '
+                      'Test loss: {:.4f}, Test accuracy: {:.3f}'.format(epoch+1, num_epochs,
+                                                                        i+1, len(train_loader),
+                                                                        running_loss / print_every,
+                                                                        val_loss / len(val_loader),
+                                                                        accuracy / len(val_loader)))
+                running_loss = 0
+                model.train()
 
     print('Finished Training')
+    show_graph(train_losses, val_losses)
 
     # Save trained model:
     print("Saving model:", end=" ")
@@ -236,9 +282,9 @@ def pytorch_cnn_classify(model_file="torch_cnn"):
 
 
 def main(argv):
-    #pytorch_cnn_train()
+    pytorch_cnn_train()
     #pytorch_cnn_test()
-    pytorch_cnn_classify(model_file="torch_cnn_99")
+    #pytorch_cnn_classify(model_file="torch_cnn_99")
 
 
 if __name__ == "__main__":
