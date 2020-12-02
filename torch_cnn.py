@@ -47,12 +47,12 @@ class DatasetTorch(Dataset):
 
 
 class Net(nn.Module):
-
     def __init__(self):
         super(Net, self).__init__()
         self.conv1 = nn.Conv2d(3, 6, 5)
-        self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
+
+        self.pool = nn.MaxPool2d(2, 2)
 
         self.fc1 = nn.Linear(16*53*53, 1000)
         self.fc2 = nn.Linear(1000, 120)
@@ -88,10 +88,11 @@ def get_conv2_shape(images):
 def pytorch_cnn_train():
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print("Device:", device)
 
     # Hyperparameters:
     batch_size = 10
-    num_epochs = 5
+    num_epochs = 50
     learning_rate = 0.005
     num_classes = 80
 
@@ -151,11 +152,13 @@ def pytorch_cnn_train():
     print('Finished Training')
 
     # Save trained model:
+    print("Saving model:", end=" ")
     PATH = './torch_cnn.pth'
     torch.save(model.state_dict(), PATH)
+    print("Done")
 
 
-def pytorch_cnn_test():
+def pytorch_cnn_test(model_file="torch_cnn"):
     batch_size = 10
     # Load Data:
     print("Loading data:", end=" ")
@@ -174,7 +177,7 @@ def pytorch_cnn_test():
 
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
-    PATH = './torch_cnn.pth'
+    PATH = './' + model_file + '.pth'
     net.load_state_dict(torch.load(PATH))
     print("Done")
 
@@ -190,7 +193,7 @@ def pytorch_cnn_test():
     print('Accuracy of the network on all images: %d %%' % (100 * correct / total))
 
 
-def pytorch_cnn_classify():
+def pytorch_cnn_classify(model_file="torch_cnn"):
     batch_size = 1
     # Load Data:
     print("Loading data:", end=" ")
@@ -208,7 +211,7 @@ def pytorch_cnn_classify():
 
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
-    PATH = './torch_cnn.pth'
+    PATH = './' + model_file + '.pth'
     net.load_state_dict(torch.load(PATH))
     print("Done")
 
@@ -235,7 +238,7 @@ def pytorch_cnn_classify():
 def main(argv):
     #pytorch_cnn_train()
     #pytorch_cnn_test()
-    pytorch_cnn_classify()
+    pytorch_cnn_classify(model_file="torch_cnn_99")
 
 
 if __name__ == "__main__":
