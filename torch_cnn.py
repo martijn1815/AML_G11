@@ -338,10 +338,18 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    model = models.wide_resnet101_2(pretrained=True)
-    model.fc = nn.Linear(2048, 81, bias=True)
+    #model = models.wide_resnet101_2(pretrained=True)
+    #model.fc = nn.Linear(2048, 81, bias=True)
 
-    print(model)
+    # Mobilenet V2:
+    #model = models.mobilenet_v2(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+
+    # Alexnet:
+    model = models.alexnet(pretrained=True)
+    model.classifier[6] = nn.Linear(1280, 81, bias=True)
+
+    #print(model)
 
     ''' Run model '''
     pytorch_cnn_train(model, num_epochs=1)
