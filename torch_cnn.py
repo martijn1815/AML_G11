@@ -22,6 +22,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
+from torchvision.models import squeezenet1_0
+
 
 class DatasetTorch(Dataset):
     """
@@ -47,8 +49,10 @@ class DatasetTorch(Dataset):
 
 
 class Net(nn.Module):
+
     def __init__(self):
         super(Net, self).__init__()
+
         self.conv1 = nn.Conv2d(3, 6, 5)
         self.conv2 = nn.Conv2d(6, 16, 5)
 
@@ -113,22 +117,25 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
 
 
 def show_graph(train_losses, val_losses):
+    """
+    Shows a train and validation loss graph
+    :param train_losses:    list
+    :param val_losses:      list
+    """
     plt.plot(train_losses, label='Training loss')
     plt.plot(val_losses, label='Validation loss')
     plt.legend(frameon=False)
     plt.show()
 
 
-def pytorch_cnn_train():
+def pytorch_cnn_train(model, num_epochs=1):
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print("Device:", device)
 
     # Hyperparameters:
     batch_size = 10
-    num_epochs = 5
-    learning_rate = 0.005
-    num_classes = 80
+    learning_rate = 0.001
 
     # Load Data:
     print("Loading data:", end=" ")
@@ -136,9 +143,6 @@ def pytorch_cnn_train():
                                                         'train_set/train_set',
                                                         batch_size)
     print("Done")
-
-    # Define CNN:
-    model = Net()
 
     # Define loss function and optimizer:
     criterion = nn.CrossEntropyLoss()
@@ -208,8 +212,10 @@ def pytorch_cnn_train():
     show_graph(train_losses, val_losses)
 
 
-def pytorch_cnn_test(model_file="torch_cnn"):
+def pytorch_cnn_test(model, model_file="torch_cnn"):
+    # Hyperparameters:
     batch_size = 10
+
     # Load Data:
     print("Loading data:", end=" ")
     _, test_loader = load_train_validate_data('train_labels.csv',
@@ -218,13 +224,10 @@ def pytorch_cnn_test(model_file="torch_cnn"):
                                               valid_size=1000)
     print("Done")
 
-    # Define CNN:
-    net = Net()
-
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
     PATH = './' + model_file + '.pth'
-    net.load_state_dict(torch.load(PATH))
+    model.load_state_dict(torch.load(PATH))
     print("Done")
 
     # Get Accuracy:
@@ -233,7 +236,7 @@ def pytorch_cnn_test(model_file="torch_cnn"):
     total = 0
     with torch.no_grad():
         for (images, labels) in test_loader:
-            outputs = net(images)
+            outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
@@ -241,8 +244,10 @@ def pytorch_cnn_test(model_file="torch_cnn"):
     print('Accuracy of the network on 1000 images: {}%'.format(100 * correct / total))
 
 
-def pytorch_cnn_classify(model_file="torch_cnn"):
+def pytorch_cnn_classify(model, model_file="torch_cnn"):
+    # Hyperparameters:
     batch_size = 1
+
     # Load Data:
     print("Loading data:", end=" ")
     scale_transform = transforms.Compose([transforms.Resize(224),
@@ -254,13 +259,10 @@ def pytorch_cnn_classify(model_file="torch_cnn"):
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     print("Done")
 
-    # Define CNN:
-    net = Net()
-
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
     PATH = './' + model_file + '.pth'
-    net.load_state_dict(torch.load(PATH))
+    model.load_state_dict(torch.load(PATH))
     print("Done")
 
     # Classify images:
@@ -268,7 +270,7 @@ def pytorch_cnn_classify(model_file="torch_cnn"):
     list_pred = []
     with torch.no_grad():
         for i, (images, labels) in enumerate(test_loader, 0):
-            outputs = net(images)
+            outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
             list_pred.append((sample_fname.split("/")[-1], predicted.item()))
@@ -276,7 +278,7 @@ def pytorch_cnn_classify(model_file="torch_cnn"):
 
     print("Writing predictions:", end=" ")
     list_pred = sorted(list_pred, key=lambda x: int(x[0][5:-4]))
-    with open("solution.csv", "w") as f:
+    with open("predictions.csv", "w") as f:
         f.write("img_name,label\n")
         for item in list_pred:
             f.write("{0},{1}\n".format(item[0], item[1]))
@@ -284,9 +286,20 @@ def pytorch_cnn_classify(model_file="torch_cnn"):
 
 
 def main(argv):
-    pytorch_cnn_train()
-    #pytorch_cnn_test()
-    #pytorch_cnn_classify(model_file="torch_cnn_99")
+    """
+    Set the model and set what to do
+    :param argv:
+    """
+    ''' Define model '''
+    #model = Net()  # Martijn's CNN
+
+    model = squeezenet1_0(pretrained=True)  # Squeeznet
+    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
+
+    ''' Run model '''
+    pytorch_cnn_train(model, num_epochs=2)
+    #pytorch_cnn_test(model)
+    #pytorch_cnn_classify(model, model_file="torch_cnn_92")
 
 
 if __name__ == "__main__":
