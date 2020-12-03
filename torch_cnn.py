@@ -347,12 +347,12 @@ def main(argv):
 
     # Alexnet:
     model = models.alexnet(pretrained=True)
-    model.classifier[6] = nn.Linear(1280, 81, bias=True)
+    model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=1)
+    #pytorch_cnn_train(model, num_epochs=1)
     #pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn")
 
