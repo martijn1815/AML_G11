@@ -138,6 +138,11 @@ def show_graph(train_losses, val_losses):
 
 
 def pytorch_cnn_train(model, num_epochs=1):
+    """
+    Train a pytorch cnn model (model can be pre-trained)
+    :param model:       pytorch cnn model
+    :param num_epochs:  int
+    """
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print("Device:", device)
@@ -223,6 +228,11 @@ def pytorch_cnn_train(model, num_epochs=1):
 
 
 def pytorch_cnn_test(model, model_file="torch_cnn"):
+    """
+    Test trained model on 1000 images from train-set
+    :param model:       pytorch cnn model   (must be same model as trained model in model_file)
+    :param model_file:  string              (pth-file containing a trained version of model)
+    """
     # Hyperparameters:
     batch_size = 10
 
@@ -255,6 +265,11 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
 
 
 def pytorch_cnn_classify(model, model_file="torch_cnn"):
+    """
+    Classify images in test-set
+    :param model:       pytorch cnn model   (must be same model as trained model in model_file)
+    :param model_file:  string              (pth-file containing a trained version of model)
+    """
     # Hyperparameters:
     batch_size = 1
 
@@ -310,7 +325,7 @@ def main(argv):
     ''' Run model '''
     pytorch_cnn_train(model, num_epochs=1)
     #pytorch_cnn_test(model)
-    #pytorch_cnn_classify(model, model_file="torch_cnn_92")
+    #pytorch_cnn_classify(model, model_file="torch_cnn_squeezenet_1")
 
 
 if __name__ == "__main__":
