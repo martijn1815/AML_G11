@@ -137,7 +137,7 @@ def show_graph(train_losses, val_losses):
     plt.show()
 
 
-def pytorch_cnn_train(model, num_epochs=1):
+def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     """
     Train a pytorch cnn model (model can be pre-trained)
     :param model:       pytorch cnn model
@@ -157,6 +157,14 @@ def pytorch_cnn_train(model, num_epochs=1):
                                                         'train_set/train_set',
                                                         batch_size)
     print("Done")
+
+    # To continue training a model:
+    if model_file:
+        # Load trained CNN:
+        print("Loading trained CNN:", end=" ")
+        PATH = './' + model_file + '.pth'
+        model.load_state_dict(torch.load(PATH))
+        print("Done")
 
     # Define loss function and optimizer:
     criterion = nn.CrossEntropyLoss()
