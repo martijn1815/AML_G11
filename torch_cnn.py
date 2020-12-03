@@ -346,13 +346,17 @@ def main(argv):
     #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
-    model = models.alexnet(pretrained=True)
-    model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model = models.alexnet(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+
+    # Mnasnet:
+    model = models.mnasnet1_0(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     #print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=1)
+    pytorch_cnn_train(model, num_epochs=1)
     #pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn")
 
