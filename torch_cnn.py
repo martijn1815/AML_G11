@@ -22,7 +22,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from torchvision.models import squeezenet1_0
+import torchvision.models as models
 
 
 class DatasetTorch(Dataset):
@@ -329,14 +329,20 @@ def main(argv):
     #model = Net()
 
     # Squeezenet:
-    model = squeezenet1_0(pretrained=True)
-    model.num_classes = 80
-    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    #model = models.squeezenet1_0(pretrained=True)
+    #model.num_classes = 80
+    #model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+
+    # ResNet:
+    model = models.resnet101(pretrained=True)
+    model.fc = nn.Linear(2048, 81, bias=True)
+
+    print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=2)
+    pytorch_cnn_train(model, num_epochs=1)
     #pytorch_cnn_test(model)
-    pytorch_cnn_classify(model, model_file="torch_cnn_squeezenet_1")
+    #pytorch_cnn_classify(model, model_file="torch_cnn")
 
 
 if __name__ == "__main__":
