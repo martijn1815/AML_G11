@@ -325,15 +325,18 @@ def main(argv):
     :param argv:
     """
     ''' Define model '''
-    #model = Net()  # Martijn's CNN
+    # Martijn's CNN:
+    #model = Net()
 
-    model = squeezenet1_0(pretrained=True)  # Squeezenet
+    # Squeezenet:
+    model = squeezenet1_0(pretrained=True)
+    model.num_classes = 80
     model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=1)
+    #pytorch_cnn_train(model, num_epochs=2)
     #pytorch_cnn_test(model)
-    #pytorch_cnn_classify(model, model_file="torch_cnn_squeezenet_1")
+    pytorch_cnn_classify(model, model_file="torch_cnn_squeezenet_1")
 
 
 if __name__ == "__main__":
