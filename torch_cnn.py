@@ -58,8 +58,8 @@ class Net(nn.Module):
 
         self.pool = nn.MaxPool2d(2, 2)
 
-        self.dropout1 = nn.Dropout(p=0.5)
-        self.dropout2 = nn.Dropout(p=0.2)
+        self.dropout1 = nn.Dropout(p=0.1)
+        self.dropout2 = nn.Dropout(p=0.1)
 
         self.fc1 = nn.Linear(16*53*53, 512)
         self.fc2 = nn.Linear(512, 128)
@@ -93,6 +93,15 @@ def get_conv2_shape(images):
 
 
 def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
+    """
+    Loads data from image directory and a csv_file for labels into data loaders
+    :param csv_file:        string
+    :param root_dir:        string                  (directory with the directory of images)
+    :param batch_size:      int
+    :param valid_size:      int                     (amount of images in validation set)
+    :return train_loader:   pytorch dataloader
+            val_loader:     pytorch dataloader
+    """
     scale_transform = transforms.Compose([transforms.ToPILImage(),
                                           transforms.Resize(224),
                                           transforms.CenterCrop(224),
@@ -150,6 +159,7 @@ def pytorch_cnn_train(model, num_epochs=1):
 
     # Train network
     print("Training CNN:")
+    model.train()
     model.to(device)
 
     running_loss = 0
@@ -201,13 +211,13 @@ def pytorch_cnn_train(model, num_epochs=1):
                 running_loss = 0
                 model.train()
 
-    print('Finished Training')
+        # Save trained model after each epoch:
+        print("Saving model:", end=" ")
+        PATH = './torch_cnn.pth'
+        torch.save(model.state_dict(), PATH)
+        print("Done")
 
-    # Save trained model:
-    print("Saving model:", end=" ")
-    PATH = './torch_cnn.pth'
-    torch.save(model.state_dict(), PATH)
-    print("Done")
+    print('Finished Training')
 
     show_graph(train_losses, val_losses)
 
@@ -263,6 +273,7 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
     print("Loading trained CNN:", end=" ")
     PATH = './' + model_file + '.pth'
     model.load_state_dict(torch.load(PATH))
+    model.eval()
     print("Done")
 
     # Classify images:
@@ -293,11 +304,11 @@ def main(argv):
     ''' Define model '''
     #model = Net()  # Martijn's CNN
 
-    model = squeezenet1_0(pretrained=True)  # Squeeznet
-    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
+    model = squeezenet1_0(pretrained=True)  # Squeezenet
+    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=2)
+    pytorch_cnn_train(model, num_epochs=1)
     #pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn_92")
 
