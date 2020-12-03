@@ -334,8 +334,8 @@ def main(argv):
     #model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     # ResNet:
-    #model = models.resnet101(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
+    model = models.resnet101(pretrained=True)
+    model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
     #model = models.wide_resnet101_2(pretrained=True)
@@ -350,13 +350,13 @@ def main(argv):
     #model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
     # Mnasnet:
-    model = models.mnasnet1_0(pretrained=True)
-    model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model = models.mnasnet1_0(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=1)
+    pytorch_cnn_train(model, num_epochs=3)
     #pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn")
 
