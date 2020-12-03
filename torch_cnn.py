@@ -334,7 +334,11 @@ def main(argv):
     #model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     # ResNet:
-    model = models.resnet101(pretrained=True)
+    #model = models.resnet101(pretrained=True)
+    #model.fc = nn.Linear(2048, 81, bias=True)
+
+    # Wide ResNet:
+    model = models.wide_resnet101_2(pretrained=True)
     model.fc = nn.Linear(2048, 81, bias=True)
 
     print(model)
