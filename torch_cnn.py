@@ -272,7 +272,7 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     print('Accuracy of the network on 1000 images: {}%'.format(100 * correct / total))
 
 
-def pytorch_cnn_classify(model, model_file="torch_cnn"):
+def pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Apple"):
     """
     Classify images in test-set
     :param model:       pytorch cnn model   (must be same model as trained model in model_file)
@@ -314,8 +314,11 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
-            print(sample_fname)
-            list_pred.append((sample_fname.split("/")[-1], predicted.item()))
+
+            if os_systeem == "Apple":
+                list_pred.append((sample_fname.split("/")[-1], predicted.item()))
+            else:
+                list_pred.append((sample_fname.split("\\")[-1], predicted.item()))
     print("Done")
 
     print("Writing predictions:", end=" ")
@@ -370,7 +373,7 @@ def main(argv):
     ''' Run model '''
     #pytorch_cnn_train(model, num_epochs=3)
     #pytorch_cnn_test(model)
-    pytorch_cnn_classify(model, model_file="torch_cnn")
+    pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
 
 
 if __name__ == "__main__":
