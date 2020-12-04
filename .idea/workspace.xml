@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="renamed" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="ProjectId" id="1kXzMjZpXlaPdp4ckfDY72skEim" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.torch_cnn">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="AML_G11" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AML_G11" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="torch_cnn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AML_G11" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/torch_cnn.py" />
+      <option name="PARAMETERS" value="time" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.torch_cnn" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.torch_cnn" />
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="" />
+      <created>1605861677983</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605861677983</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added main file">
+      <created>1605862292056</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605862292056</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added CSV files">
+      <created>1605862328960</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605862328960</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Loads train_lables.csv to a pandas df">
+      <created>1605864240434</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605864240434</updated>
+    </task>
+    <task id="LOCAL-00004" summary="No.">
+      <created>1605864359964</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605864359964</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Working on a pytorch CNN classifier.">
+      <created>1606742397750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606742397750</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Made a first version of a CNN in pytorch">
+      <created>1606769666452</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606769666452</updated>
+    </task>
+    <task id="LOCAL-00007" summary="First trained pytorch CNN">
+      <created>1606769695991</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1606769695991</updated>
+    </task>
+    <task id="LOCAL-00008" summary="First predictions from pytorch CNN">
+      <created>1606769717618</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1606769717618</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Deleted due to large size">
+      <created>1606769926686</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606769926688</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Trained model is to large">
+      <created>1606770096018</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1606770096018</updated>
+    </task>
+    <task id="LOCAL-00011" summary="First version pytorch CNN">
+      <created>1606771032404</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606771032404</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Second run">
+      <created>1606775509243</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606775509243</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Tweaked hyperparameters a bit and added more user feedback">
+      <created>1606839805346</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1606839805346</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Run on 5 epochs, batches of 10">
+      <created>1606839832891</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1606839832891</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Run on 50 epochs, batches of 10">
+      <created>1606933285022</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1606933285022</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added validation while training and a loss plot after training.">
+      <created>1606936054646</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1606936054646</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added dropout layers">
+      <created>1606946863798</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1606946863798</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Ran 30 epochs, with dropout layers">
+      <created>1606996481437</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1606996481437</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Implemented the use of pre-trained models">
+      <created>1606996549463</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1606996549463</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Save model after each epoch, so model is saved if training is interrupted.">
+      <created>1606998767751</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1606998767751</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added more in-file documentation.">
+      <created>1606999110832</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1606999110832</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added option to continue training a model on more epochs">
+      <created>1606999267802</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1606999267802</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added trained models to gitignore, as the files are to large for github">
+      <created>1606999459727</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1606999459727</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Loss graphs">
+      <created>1607001073024</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1607001073024</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Changed solution to predictions&#10;Predictions on squeezenet, 1 epoch">
+      <created>1607001718847</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1607001718847</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Slight changes">
+      <created>1607001737866</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1607001737866</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Trained squeezenet on 2 epochs">
+      <created>1607011610485</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1607011610485</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Implemented ResNet101">
+      <created>1607011632171</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1607011632171</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Implemented Wide ResNet101">
+      <created>1607011810716</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1607011810716</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Implemented Alexnet">
+      <created>1607012922495</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1607012922495</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Implemented Alexnet">
+      <created>1607013048045</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1607013048045</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Implemented Mnasnet">
+      <created>1607013507934</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1607013507934</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Mobilenet, 2 epochs">
+      <created>1607036140479</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1607036140479</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added VGG and gpu usages for classifing">
+      <created>1607094952923</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1607094952923</updated>
+    </task>
+    <task id="LOCAL-00035" summary="renamed">
+      <created>1607094997211</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1607094997211</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Trained model is to large" />
+    <MESSAGE value="First version pytorch CNN" />
+    <MESSAGE value="Second run" />
+    <MESSAGE value="Tweaked hyperparameters a bit and added more user feedback" />
+    <MESSAGE value="Run on 5 epochs, batches of 10" />
+    <MESSAGE value="Run on 50 epochs, batches of 10" />
+    <MESSAGE value="Added validation while training and a loss plot after training." />
+    <MESSAGE value="Added dropout layers" />
+    <MESSAGE value="Ran 30 epochs, with dropout layers" />
+    <MESSAGE value="Implemented the use of pre-trained models" />
+    <MESSAGE value="Save model after each epoch, so model is saved if training is interrupted." />
+    <MESSAGE value="Added more in-file documentation." />
+    <MESSAGE value="Added option to continue training a model on more epochs" />
+    <MESSAGE value="Added trained models to gitignore, as the files are to large for github" />
+    <MESSAGE value="Loss graphs" />
+    <MESSAGE value="Changed solution to predictions&#10;Predictions on squeezenet, 1 epoch" />
+    <MESSAGE value="Slight changes" />
+    <MESSAGE value="Trained squeezenet on 2 epochs" />
+    <MESSAGE value="Implemented ResNet101" />
+    <MESSAGE value="Implemented Wide ResNet101" />
+    <MESSAGE value="Implemented Alexnet" />
+    <MESSAGE value="Implemented Mnasnet" />
+    <MESSAGE value="Mobilenet, 2 epochs" />
+    <MESSAGE value="Added VGG and gpu usages for classifing" />
+    <MESSAGE value="renamed" />
+    <option name="LAST_COMMIT_MESSAGE" value="renamed" />
+  </component>
+</project>
