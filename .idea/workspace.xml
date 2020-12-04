@@ -389,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607095214844</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="added a print statement for debugging error Jop">
+      <created>1607096345831</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1607096345831</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -427,7 +434,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First version pytorch CNN" />
     <MESSAGE value="Second run" />
     <MESSAGE value="Tweaked hyperparameters a bit and added more user feedback" />
     <MESSAGE value="Run on 5 epochs, batches of 10" />
@@ -452,6 +458,7 @@
     <MESSAGE value="Added VGG and gpu usages for classifing" />
     <MESSAGE value="renamed" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="added a print statement for debugging error Jop" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a print statement for debugging error Jop" />
   </component>
 </project>
