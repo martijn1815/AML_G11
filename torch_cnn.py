@@ -314,6 +314,7 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
+            print(sample_fname)
             list_pred.append((sample_fname.split("/")[-1], predicted.item()))
     print("Done")
 
@@ -341,12 +342,12 @@ def main(argv):
     #model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     # ResNet:
-    model = models.resnet101(pretrained=True)
-    model.fc = nn.Linear(2048, 81, bias=True)
+    #model = models.resnet101(pretrained=True)
+    #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    #model = models.wide_resnet101_2(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
+    model = models.wide_resnet101_2(pretrained=True)
+    model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
     #model = models.mobilenet_v2(pretrained=True)
