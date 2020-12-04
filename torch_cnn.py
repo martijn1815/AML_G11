@@ -281,6 +281,10 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
     # Hyperparameters:
     batch_size = 1
 
+    # Set device:
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print("Device:", device)
+
     # Load Data:
     print("Loading data:", end=" ")
     scale_transform = transforms.Compose([transforms.Resize(224),
@@ -297,6 +301,7 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
     PATH = './' + model_file + '.pth'
     model.load_state_dict(torch.load(PATH))
     model.eval()
+    model.to(device)
     print("Done")
 
     # Classify images:
@@ -304,6 +309,8 @@ def pytorch_cnn_classify(model, model_file="torch_cnn"):
     list_pred = []
     with torch.no_grad():
         for i, (images, labels) in enumerate(test_loader, 0):
+            images = images.to(device)
+
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
@@ -353,12 +360,16 @@ def main(argv):
     #model = models.mnasnet1_0(pretrained=True)
     #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
+    # VGG:
+    #model = models.vgg19_bn(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=3)
+    #pytorch_cnn_train(model, num_epochs=3)
     #pytorch_cnn_test(model)
-    #pytorch_cnn_classify(model, model_file="torch_cnn")
+    pytorch_cnn_classify(model, model_file="torch_cnn")
 
 
 if __name__ == "__main__":
