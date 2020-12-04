@@ -19,9 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="Prediction from resnet on 2 epochs">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.torch_cnn">
+  <component name="RunManager" selected="Python.prediction_vote">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AML_G11" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,6 +69,27 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="prediction_vote" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="AML_G11" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prediction_vote.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -124,9 +146,11 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.torch_cnn" />
+      <item itemvalue="Python.prediction_vote" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.prediction_vote" />
         <item itemvalue="Python.torch_cnn" />
         <item itemvalue="Python.test" />
       </list>
@@ -421,7 +445,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607098438257</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Annoying .idea dir">
+      <created>1607098642661</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1607098642661</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Annoying .idea dir">
+      <created>1607098687691</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1607098687691</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Changed name to include model and num. epochs">
+      <created>1607098750256</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1607098750256</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -459,8 +504,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Run on 5 epochs, batches of 10" />
-    <MESSAGE value="Run on 50 epochs, batches of 10" />
     <MESSAGE value="Added validation while training and a loss plot after training." />
     <MESSAGE value="Added dropout layers" />
     <MESSAGE value="Ran 30 epochs, with dropout layers" />
@@ -484,6 +527,8 @@
     <MESSAGE value="added a print statement for debugging error Jop" />
     <MESSAGE value="Fixed apple/windows bug" />
     <MESSAGE value="Prediction from resnet on 2 epochs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prediction from resnet on 2 epochs" />
+    <MESSAGE value="Annoying .idea dir" />
+    <MESSAGE value="Changed name to include model and num. epochs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed name to include model and num. epochs" />
   </component>
 </project>

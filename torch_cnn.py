@@ -371,7 +371,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=3, model_file="torch_cnn")
+    pytorch_cnn_train(model, num_epochs=3)
     #pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
 
