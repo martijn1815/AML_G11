@@ -8,5 +8,12 @@
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
     <option name="myDocStringFormat" value="Plain" />
+<<<<<<< HEAD
+=======
+    <option name="renderExternalDocumentation" value="true" />
+  </component>
+  <component name="TestRunnerService">
+    <option name="PROJECT_TEST_RUNNER" value="pytest" />
+>>>>>>> f50fb6d93c27050ed4bbd3dde751e6f5a29356ec
   </component>
 </module>
