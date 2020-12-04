@@ -307,6 +307,7 @@ def pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Apple"):
     # Classify images:
     print("Classifying images:", end=" ")
     list_pred = []
+
     with torch.no_grad():
         for i, (images, labels) in enumerate(test_loader, 0):
             images = images.to(device)
@@ -314,7 +315,6 @@ def pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Apple"):
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             sample_fname, _ = test_loader.dataset.samples[i]
-
             if os_systeem == "Apple":
                 list_pred.append((sample_fname.split("/")[-1], predicted.item()))
             else:
@@ -371,9 +371,9 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=3)
+    pytorch_cnn_train(model, num_epochs=3, model_file="torch_cnn")
     #pytorch_cnn_test(model)
-    pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
+    #pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
 
 
 if __name__ == "__main__":
