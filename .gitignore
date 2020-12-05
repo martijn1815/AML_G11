@@ -9,3 +9,5 @@
 .idea/AML_G11.iml
 .idea/workspace.xml
 .idea/*
+.idea
+torch_cnn_WR_4.pth
