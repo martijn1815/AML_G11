@@ -353,8 +353,8 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -369,8 +369,8 @@ def main(argv):
     #model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
     # VGG16:
-    model = models.vgg16(pretrained=True)
-    model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model = models.vgg16(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
     # Inception V3:
     #model = models.inception_v3(pretrained=True)
@@ -381,8 +381,8 @@ def main(argv):
 
     ''' Run model '''
     #pytorch_cnn_train(model, num_epochs=3)
-    pytorch_cnn_test(model)
-    #pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
+    #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
+    pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
 
 
 if __name__ == "__main__":
