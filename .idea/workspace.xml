@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_alexnet_5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_mobilenet_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_resnet_2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_voted.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions_wideResNet_3.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -164,6 +168,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605861677983</updated>
+      <workItem from="1607157482022" duration="203000" />
     </task>
     <task id="LOCAL-00001" summary="Added main file">
       <created>1605862292056</created>
@@ -469,6 +474,9 @@
     <option name="localTasksCounter" value="44" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
       <list>
@@ -530,5 +538,11 @@
     <MESSAGE value="Annoying .idea dir" />
     <MESSAGE value="Changed name to include model and num. epochs" />
     <option name="LAST_COMMIT_MESSAGE" value="Changed name to include model and num. epochs" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607157608280">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607157608280" />
   </component>
 </project>
