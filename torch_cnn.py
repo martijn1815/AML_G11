@@ -349,8 +349,8 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    model = models.wide_resnet101_2(pretrained=True)
-    model.fc = nn.Linear(2048, 81, bias=True)
+    #model = models.wide_resnet101_2(pretrained=True)
+    #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
     #model = models.mobilenet_v2(pretrained=True)
@@ -364,15 +364,24 @@ def main(argv):
     #model = models.mnasnet1_0(pretrained=True)
     #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
-    # VGG:
+    # VGG19:
     #model = models.vgg19_bn(pretrained=True)
     #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+
+    # VGG16:
+    model = models.vgg16(pretrained=True)
+    model.classifier[6] = nn.Linear(4096, 81, bias=True)
+
+    # Inception V3:
+    #model = models.inception_v3(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+
 
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=3)
-    #pytorch_cnn_test(model)
+    #pytorch_cnn_train(model, num_epochs=3)
+    pytorch_cnn_test(model)
     #pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Windows")
 
 
