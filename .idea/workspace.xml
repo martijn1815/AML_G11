@@ -161,9 +161,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.prediction_vote" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.torch_cnn" />
+      <item itemvalue="Python.prediction_vote" />
     </list>
     <recent_temporary>
       <list>
