@@ -58,7 +58,7 @@ class Net(nn.Module):
 
         self.pool = nn.MaxPool2d(2, 2)
 
-        self.dropout1 = nn.Dropout(p=0.1)
+        self.dropout1 = nn.Dropout(p=0.2)
         self.dropout2 = nn.Dropout(p=0.1)
 
         self.fc1 = nn.Linear(16*53*53, 512)
