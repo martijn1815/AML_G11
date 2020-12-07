@@ -125,6 +125,56 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
     return train_loader, val_loader
 
 
+def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, extra = True):
+    """
+    Loads data from image directory and a csv_file for labels into data loaders
+    :param csv_file:        string
+    :param root_dir:        string                  (directory with the directory of images)
+    :param batch_size:      int
+    :param valid_size:      int                     (amount of images in validation set)
+    :return train_loader:   pytorch dataloader
+            val_loader:     pytorch dataloader
+    """
+
+
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(224),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.5, 0.5, 0.5),
+                                                               (0.5, 0.5, 0.5))])
+
+    random_transform = transforms.Compose([transforms.ToPILImage(),
+                                           transforms.RandomCrop(64, padding=4),
+                                           transforms.Resize(224),
+                                           transforms.CenterCrop(224),
+                                           transforms.ColorJitter(0,0,0,0),
+                                           transforms.ToTensor(),
+                                           transforms.Normalize((0.5, 0.5, 0.5),
+                                                                (0.5, 0.5, 0.5))])
+
+    transformed_dataset = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
+    if extra == True:
+        original_data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
+        data_set = torch.utils.data.ConcatDataset([transformed_dataset, original_data_set])
+    else:
+        data_set = transformed_dataset
+
+
+    split = int(np.floor(valid_size))
+    indices = list(range(len(data_set)))
+    np.random.shuffle(indices)
+    train_idx, test_idx = indices[split:], indices[:split]
+
+    train_sampler = SubsetRandomSampler(train_idx)
+    test_sampler = SubsetRandomSampler(test_idx)
+
+    # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    train_loader = torch.utils.data.DataLoader(data_set, sampler=train_sampler, batch_size=batch_size)
+    val_loader = torch.utils.data.DataLoader(data_set, sampler=test_sampler, batch_size=batch_size)
+
+    return train_loader, val_loader
+
 def show_graph(train_losses, val_losses):
     """
     Shows a train and validation loss graph
@@ -151,12 +201,6 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     batch_size = 10
     learning_rate = 0.001
 
-    # Load Data:
-    print("Loading data:", end=" ")
-    train_loader, val_loader = load_train_validate_data('train_labels.csv',
-                                                        'train_set/train_set',
-                                                        batch_size)
-    print("Done")
 
     # To continue training a model:
     if model_file:
@@ -180,6 +224,16 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     train_losses, val_losses = [], []
 
     for epoch in range(num_epochs):  # loop over the dataset multiple times
+        # Load Data:
+        print("Loading data:", end=" ")
+
+        # train_loader, val_loader = load_train_validate_data('train_labels.csv',
+        #                                                     'train_set/train_set',
+        #                                                     batch_size)
+        train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+                                                            'train_set/train_set',
+                                                            batch_size, False)
+        print("Done")
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
             #get_conv2_shape(images)
@@ -349,8 +403,8 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    #model = models.wide_resnet101_2(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
+    model = models.wide_resnet101_2(pretrained=True)
+    model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
     #model = models.mobilenet_v2(pretrained=True)
@@ -380,7 +434,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=30)
+    pytorch_cnn_train(model, num_epochs=10)
     #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
     #pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
 
