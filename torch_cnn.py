@@ -201,6 +201,14 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     batch_size = 10
     learning_rate = 0.001
 
+    print("Loading data:", end=" ")
+    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
+    #                                                     'train_set/train_set',
+    #                                                     batch_size)
+    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+                                                          'train_set/train_set',
+                                                          batch_size, False)
+    print("Done")
 
     # To continue training a model:
     if model_file:
@@ -214,6 +222,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 
+
     # Train network
     print("Training CNN:")
     model.train()
@@ -223,17 +232,9 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     print_every = 100
     train_losses, val_losses = [], []
 
+
     for epoch in range(num_epochs):  # loop over the dataset multiple times
         # Load Data:
-        print("Loading data:", end=" ")
-
-        # train_loader, val_loader = load_train_validate_data('train_labels.csv',
-        #                                                     'train_set/train_set',
-        #                                                     batch_size)
-        train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-                                                            'train_set/train_set',
-                                                            batch_size, False)
-        print("Done")
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
             #get_conv2_shape(images)
