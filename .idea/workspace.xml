@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="Changed dropout2">
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="Set my model">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -524,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607346581930</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Set my model">
+      <created>1607347067846</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1607347067846</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added dropout layers" />
     <MESSAGE value="Ran 30 epochs, with dropout layers" />
     <MESSAGE value="Implemented the use of pre-trained models" />
     <MESSAGE value="Save model after each epoch, so model is saved if training is interrupted." />
@@ -590,6 +596,7 @@
     <MESSAGE value="Changed name to include model and num. epochs" />
     <MESSAGE value="." />
     <MESSAGE value="Changed dropout2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed dropout2" />
+    <MESSAGE value="Set my model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set my model" />
   </component>
 </project>
