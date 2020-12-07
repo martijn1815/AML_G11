@@ -337,7 +337,7 @@ def main(argv):
     """
     ''' Define model '''
     # Martijn's CNN:
-    #model = Net()
+    model = Net()
 
     # Squeezenet:
     #model = models.squeezenet1_0(pretrained=True)
@@ -353,8 +353,8 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    model = models.mobilenet_v2(pretrained=True)
-    model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model = models.mobilenet_v2(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -380,9 +380,9 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=3)
+    pytorch_cnn_train(model, num_epochs=30)
     #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
-    pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
+    #pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
 
 
 if __name__ == "__main__":

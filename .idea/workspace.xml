@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="Changed dropout2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
@@ -517,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607346162046</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Changed dropout2">
+      <created>1607346581930</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1607346581930</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,7 +565,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added validation while training and a loss plot after training." />
     <MESSAGE value="Added dropout layers" />
     <MESSAGE value="Ran 30 epochs, with dropout layers" />
     <MESSAGE value="Implemented the use of pre-trained models" />
@@ -583,6 +589,7 @@
     <MESSAGE value="Annoying .idea dir" />
     <MESSAGE value="Changed name to include model and num. epochs" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Changed dropout2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed dropout2" />
   </component>
 </project>
