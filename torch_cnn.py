@@ -390,7 +390,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
         for item in list_pred:
             f.write("{0}".format(item[0]))
             for x in item[1]:
-                f.write(",{0}".format(item[1]))
+                f.write(",{0}".format(x))
             f.write("\n")
     print("Done")
 
