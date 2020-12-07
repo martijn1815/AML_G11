@@ -153,13 +153,12 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
                                            transforms.Normalize((0.5, 0.5, 0.5),
                                                                 (0.5, 0.5, 0.5))])
 
-    transformed_dataset = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
-    if extra == True:
+    data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
+    if extra:
         original_data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
-        data_set = torch.utils.data.ConcatDataset([transformed_dataset, original_data_set])
-    else:
-        data_set = transformed_dataset
+        data_set = torch.utils.data.ConcatDataset([data_set, original_data_set])
 
+    print(len(data_set))
 
     split = int(np.floor(valid_size))
     indices = list(range(len(data_set)))
@@ -172,7 +171,6 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
     # train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
     train_loader = torch.utils.data.DataLoader(data_set, sampler=train_sampler, batch_size=batch_size)
     val_loader = torch.utils.data.DataLoader(data_set, sampler=test_sampler, batch_size=batch_size)
-
     return train_loader, val_loader
 
 def show_graph(train_losses, val_losses):
@@ -207,7 +205,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     #                                                     batch_size)
     train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
                                                           'train_set/train_set',
-                                                          batch_size, False)
+                                                          batch_size, extra =  False)
     print("Done")
 
     # To continue training a model:
@@ -404,12 +402,12 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    model = models.wide_resnet101_2(pretrained=True)
-    model.fc = nn.Linear(2048, 81, bias=True)
+    # model = models.wide_resnet101_2(pretrained=True)
+    # model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -435,7 +433,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=10)
+    pytorch_cnn_train(model, num_epochs=2)
     #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
     #pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
 
