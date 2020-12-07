@@ -10,4 +10,5 @@
 .idea/workspace.xml
 .idea/*
 .idea
+*.xml
 torch_cnn_WR_4.pth
