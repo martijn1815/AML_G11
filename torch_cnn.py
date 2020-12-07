@@ -200,12 +200,12 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     learning_rate = 0.001
 
     print("Loading data:", end=" ")
-    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
-    #                                                     'train_set/train_set',
-    #                                                     batch_size)
-    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-                                                          'train_set/train_set',
-                                                          batch_size, extra =  False)
+    train_loader, val_loader = load_train_validate_data('train_labels.csv',
+                                                        'train_set/train_set',
+                                                        batch_size)
+    # train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+    #                                                       'train_set/train_set',
+    #                                                       batch_size, extra = True)
     print("Done")
 
     # To continue training a model:
@@ -433,7 +433,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=2)
+    pytorch_cnn_train(model, num_epochs=25)
     #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
     #pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
 
