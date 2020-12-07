@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="Added option to get top-n labels when classifying">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
@@ -187,13 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00002" summary="Added CSV files">
-      <created>1605862328960</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1605862328960</updated>
     </task>
     <task id="LOCAL-00003" summary="Loads train_lables.csv to a pandas df">
       <created>1605864240434</created>
@@ -531,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607353861825</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Added option to get top-n labels when classifying">
+      <created>1607360982187</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1607360982187</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ran 30 epochs, with dropout layers" />
     <MESSAGE value="Implemented the use of pre-trained models" />
     <MESSAGE value="Save model after each epoch, so model is saved if training is interrupted." />
     <MESSAGE value="Added more in-file documentation." />
@@ -597,6 +596,7 @@
     <MESSAGE value="Changed dropout2" />
     <MESSAGE value="Set my model" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Added option to get top-n labels when classifying" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added option to get top-n labels when classifying" />
   </component>
 </project>

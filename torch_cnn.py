@@ -327,7 +327,7 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     print('Accuracy of the network on 1000 images: {}%'.format(100 * correct / total))
 
 
-def pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Apple"):
+def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="MacOs"):
     """
     Classify images in test-set
     :param model:       pytorch cnn model   (must be same model as trained model in model_file)
@@ -368,20 +368,30 @@ def pytorch_cnn_classify(model, model_file="torch_cnn", os_systeem="Apple"):
             images = images.to(device)
 
             outputs = model(images)
-            _, predicted = torch.max(outputs.data, 1)
+            #_, predicted = torch.max(outputs.data, 1)
+            predicted = torch.topk(outputs, top_k, 1).indices.tolist()[0]
             sample_fname, _ = test_loader.dataset.samples[i]
-            if os_systeem == "Apple":
-                list_pred.append((sample_fname.split("/")[-1], predicted.item()))
+            if os_systeem == "MacOs":
+                list_pred.append((sample_fname.split("/")[-1], predicted))
             else:
-                list_pred.append((sample_fname.split("\\")[-1], predicted.item()))
+                list_pred.append((sample_fname.split("\\")[-1], predicted))
     print("Done")
 
     print("Writing predictions:", end=" ")
+    output_file = "predictions.csv"
+    if top_k != 1:
+        output_file = "predictions_top{}.csv".format(top_k)
     list_pred = sorted(list_pred, key=lambda x: int(x[0][5:-4]))
-    with open("predictions.csv", "w") as f:
-        f.write("img_name,label\n")
+    with open(output_file, "w") as f:
+        f.write("img_name")
+        for i in range(top_k):
+            f.write(",label")
+        f.write("\n")
         for item in list_pred:
-            f.write("{0},{1}\n".format(item[0], item[1]))
+            f.write("{0}".format(item[0]))
+            for x in item[1]:
+                f.write(",{0}".format(item[0]))
+            f.write("\n")
     print("Done")
 
 
@@ -392,20 +402,19 @@ def main(argv):
     """
     ''' Define model '''
     # Martijn's CNN:
-    model = Net()
+    #model = Net()
 
     # Squeezenet:
-    #model = models.squeezenet1_0(pretrained=True)
-    #model.num_classes = 80
-    #model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    model = models.squeezenet1_0(pretrained=True)
+    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     # ResNet:
     #model = models.resnet101(pretrained=True)
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Wide ResNet:
-    model = models.wide_resnet101_2(pretrained=True)
-    model.fc = nn.Linear(2048, 81, bias=True)
+    #model = models.wide_resnet101_2(pretrained=True)
+    #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
     #model = models.mobilenet_v2(pretrained=True)
@@ -435,9 +444,9 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=10)
+    #pytorch_cnn_train(model, num_epochs=10)
     #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
-    #pytorch_cnn_classify(model, model_file="torch_mobilenetv2_10epochs", os_systeem="Windows")
+    pytorch_cnn_classify(model, top_k=3, model_file="torch_cnn_squeezenet_2", os_systeem="MacOs")
 
 
 if __name__ == "__main__":
