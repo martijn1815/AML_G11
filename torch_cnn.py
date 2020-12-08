@@ -13,6 +13,7 @@ import os
 from skimage import io
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.utils import shuffle
 
 import torch
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
@@ -111,8 +112,7 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
     data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
 
     split = int(np.floor(valid_size))
-    indices = list(range(len(data_set)))
-    np.random.shuffle(indices)
+    indices = shuffle(list(range(len(data_set))), random_state=0)
     train_idx, test_idx = indices[split:], indices[:split]
 
     train_sampler = SubsetRandomSampler(train_idx)
@@ -162,8 +162,7 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
 
 
     split = int(np.floor(valid_size))
-    indices = list(range(len(data_set)))
-    np.random.shuffle(indices)
+    indices = shuffle(list(range(len(data_set))), random_state=0)
     train_idx, test_idx = indices[split:], indices[:split]
 
     train_sampler = SubsetRandomSampler(train_idx)
@@ -174,6 +173,7 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
     val_loader = torch.utils.data.DataLoader(data_set, sampler=test_sampler, batch_size=batch_size)
 
     return train_loader, val_loader
+
 
 def show_graph(train_losses, val_losses):
     """
@@ -232,7 +232,6 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     print_every = 100
     train_losses, val_losses = [], []
 
-
     for epoch in range(num_epochs):  # loop over the dataset multiple times
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
@@ -280,7 +279,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = './MN_org_'+str(epoch)+'_e.pth'
+        PATH = 'MN_org_{}_e.pth'.format(epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -296,19 +295,19 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     :param model_file:  string              (pth-file containing a trained version of model)
     """
     # Hyperparameters:
-    batch_size = 100
+    batch_size = 10
 
     # Load Data:
     print("Loading data:", end=" ")
     _, test_loader = load_train_validate_data('train_labels.csv',
                                               'train_set/train_set',
                                               batch_size,
-                                              valid_size=1000)
+                                              valid_size=100)
     print("Done")
 
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
-    PATH = './' + model_file + '.pth'
+    PATH = '{}.pth'.format(model_file)
     model.load_state_dict(torch.load(PATH))
     print("Done")
 
@@ -323,7 +322,7 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
     print("Done")
-    print('Accuracy of the network on 1000 images: {}%'.format(100 * correct / total))
+    print('Accuracy of the network on 100 images: {}%'.format(100 * correct / total))
 
 
 def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="MacOs"):
@@ -352,7 +351,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
 
     # Load trained CNN:
     print("Loading trained CNN:", end=" ")
-    PATH = './' + model_file + '.pth'
+    PATH = '{}.pth'.format(model_file)
     model.load_state_dict(torch.load(PATH))
     model.eval()
     model.to(device)
