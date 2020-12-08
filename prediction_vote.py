@@ -118,7 +118,7 @@ def write_rank_predictions(dict, top_k, os_system="MacOs"):
 
 def main(argv):
     os_system = "MacOs"
-    files = ["predictions_alexnet_5",
+    files = ["predictions_augmented_mobilenet_25_top3",
              "predictions_wideResNet_3",
              "predictions_mobilenetv2_10"]
 
