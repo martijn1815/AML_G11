@@ -11,6 +11,42 @@ import sys
 import csv
 from collections import defaultdict, Counter
 from itertools import combinations
+import operator
+
+
+def load_files(files, os_system="MacOs"):
+    predictions_dict = defaultdict(list)
+    if os_system == "MacOs":
+        dir_os = "predictions/"
+    else:
+        dir_os = "predictions\\"
+
+    for file_name in files:
+        with open("{0}{1}.csv".format(dir_os, file_name), mode='r') as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=',')
+            first = True
+            for row in csv_reader:
+                if first:
+                    first = False
+                elif len(row) == 2:
+                    predictions_dict[row[0]].append(row[1])
+                else:
+                    predictions_dict[row[0]].append(row[1:])
+
+    return predictions_dict
+
+
+def get_top_k(files):
+    k_list = []
+
+    for f in files:
+        x = f.split('.')[0].split('_')[-1]
+        if len(x) > 1 and x[0] == "t":
+            k_list.append(int(x[-1]))
+        else:
+            k_list.append(1)
+
+    return max(k_list)
 
 
 def overlap(dict, x, y):
@@ -33,34 +69,67 @@ def most_frequent(List):
     return occurence_count.most_common(1)[0][0]
 
 
-def write_voted_predictions(dict):
+def write_voted_predictions(dict, os_system="MacOs"):
+    if os_system == "MacOS":
+        dir_os = "predictions/"
+    else:
+        dir_os = "predictions\\"
+
     print("Writing predictions:", end=" ")
-    with open("predictions_voted.csv", "w") as f:
+    with open("{0}predictions_voted.csv".format(dir_os), "w") as f:
         f.write("img_name,label\n")
         for key, value in dict.items():
             f.write("{0},{1}\n".format(key, most_frequent(value)))
     print("Done")
 
 
+def rank_predictions(dict, top_k):
+    ranked = []
+
+    print("Ranking predictions:", end=" ")
+    for key, value in dict.items():
+        score_dict = defaultdict(int)
+        for v in value:
+            for i, pred in enumerate(v):
+                score_dict[pred] += top_k-i
+        prediction = max(score_dict.items(), key=operator.itemgetter(1))[0]
+        #print(prediction, score_dict)
+        ranked.append([key, prediction])
+    print("Done")
+
+    return ranked
+
+
+def write_rank_predictions(dict, top_k, os_system="MacOs"):
+    if os_system == "MacOs":
+        dir_os = "predictions/"
+    else:
+        dir_os = "predictions\\"
+
+    ranked = rank_predictions(dict, top_k)
+
+    print("Writing predictions:", end=" ")
+    with open("{0}predictions_ranked.csv".format(dir_os), "w") as f:
+        f.write("img_name,label\n")
+        for output in ranked:
+            f.write("{0},{1}\n".format(output[0], output[1]))
+    print("Done")
+
+
 def main(argv):
-    files = ["predictions_resnet_2.csv",
-             "predictions_wideResNet_3.csv",
-             "predictions_mobilenet_2.csv"]
+    os_system = "MacOs"
+    files = ["predictions_resnet_2",
+             "predictions_squeezenet_2_top3",
+             "predictions_mobilenet_2"]
 
-    predictions_dict = defaultdict(list)
+    predictions_dict = load_files(files, os_system=os_system)
+    top_k = get_top_k(files)
 
-    for file_name in files:
-        with open(file_name, mode='r') as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=',')
-            first = True
-            for row in csv_reader:
-                if first:
-                    first = False
-                else:
-                    predictions_dict[row[0]].append(row[1])
-
-    print_overlap(files, predictions_dict)
-    write_voted_predictions(predictions_dict)
+    if top_k == 1:
+        print_overlap(files, predictions_dict)
+        write_voted_predictions(predictions_dict, os_system=os_system)
+    else:
+        write_rank_predictions(predictions_dict, top_k, os_system=os_system)
 
 
 if __name__ == "__main__":
