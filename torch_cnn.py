@@ -296,7 +296,7 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     :param model_file:  string              (pth-file containing a trained version of model)
     """
     # Hyperparameters:
-    batch_size = 10
+    batch_size = 100
 
     # Load Data:
     print("Loading data:", end=" ")
@@ -443,12 +443,13 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=25)
-    for i in range(0,25):
-        model_file = './MN_org_'+str(i)+'_e'
-        print(model_file)
-        pytorch_cnn_test(model, model_file=model_file)
-    # pytorch_cnn_classify(model, top_k=3, model_file="torch_cnn_squeezenet_2", os_systeem="MacOs")
+    # pytorch_cnn_train(model, num_epochs=25)
+    # for i in range(0,25):
+    #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
+    #     print(model_file)
+    model_file = './models/Mobilenet_augmented+original_loop/MN_augmented_loop_25'
+    # pytorch_cnn_test(model, model_file=model_file)
+    pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
