@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,20 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00013" summary="Tweaked hyperparameters a bit and added more user feedback">
-      <created>1606839805346</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1606839805346</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Run on 5 epochs, batches of 10">
-      <created>1606839832891</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1606839832891</updated>
     </task>
     <task id="LOCAL-00015" summary="Run on 50 epochs, batches of 10">
       <created>1606933285022</created>
@@ -530,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607441743608</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary=",">
+      <created>1607443251695</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1607443251696</updated>
+    </task>
+    <task id="LOCAL-00063" summary=".">
+      <created>1607443284206</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1607443284207</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added option to continue training a model on more epochs" />
     <MESSAGE value="Added trained models to gitignore, as the files are to large for github" />
     <MESSAGE value="Loss graphs" />
     <MESSAGE value="Changed solution to predictions&#10;Predictions on squeezenet, 1 epoch" />
@@ -594,8 +593,9 @@
     <MESSAGE value="Added option to get top-n labels when classifying" />
     <MESSAGE value="Added prediction ranking, works with variable top_k size" />
     <MESSAGE value="Renamed and replaced" />
-    <MESSAGE value="." />
     <MESSAGE value="Set test data to validation data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set test data to validation data" />
+    <MESSAGE value="," />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
