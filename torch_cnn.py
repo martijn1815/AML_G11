@@ -201,14 +201,14 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     batch_size = 10
     learning_rate = 0.001
 
-    print("Loading data:", end=" ")
-    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
-    #                                                     'train_set/train_set',
-    #                                                     batch_size)
-    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-                                                          'train_set/train_set',
-                                                          batch_size, False)
-    print("Done")
+    # print("Loading data:", end=" ")
+    train_loader, val_loader = load_train_validate_data('train_labels.csv',
+                                                        'train_set/train_set',
+                                                        batch_size)
+    # train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+    #                                                       'train_set/train_set',
+    #                                                       batch_size, False)
+    # print("Done")
 
     # To continue training a model:
     if model_file:
@@ -234,7 +234,6 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
 
     for epoch in range(num_epochs):  # loop over the dataset multiple times
-        # Load Data:
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
             #get_conv2_shape(images)
@@ -281,7 +280,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = './torch_cnn.pth'
+        PATH = './MN_org_'+str(epoch)+'_e.pth'
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -405,8 +404,8 @@ def main(argv):
     # model = Net()
 
     # Squeezenet:
-    model = models.squeezenet1_0(pretrained=True)
-    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    # model = models.squeezenet1_0(pretrained=True)
+    # model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
 
     # ResNet:
     #model = models.resnet101(pretrained=True)
@@ -417,8 +416,8 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -444,9 +443,12 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=10)
-    #pytorch_cnn_test(model, model_file="torch_mobilenetv2_10epochs")
-    pytorch_cnn_classify(model, top_k=3, model_file="torch_cnn_squeezenet_2", os_systeem="MacOs")
+    pytorch_cnn_train(model, num_epochs=25)
+    for i in range(0,25):
+        model_file = './MN_org_'+str(i)+'_e'
+        print(model_file)
+        pytorch_cnn_test(model, model_file=model_file)
+    # pytorch_cnn_classify(model, top_k=3, model_file="torch_cnn_squeezenet_2", os_systeem="MacOs")
 
 
 if __name__ == "__main__":
