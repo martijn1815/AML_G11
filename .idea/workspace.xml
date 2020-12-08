@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,6 +186,13 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
+    </task>
+    <task id="LOCAL-00009" summary="Deleted due to large size">
+      <created>1606769926686</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606769926688</updated>
     </task>
     <task id="LOCAL-00010" summary="Trained model is to large">
       <created>1606770096018</created>
@@ -523,14 +530,7 @@
       <option name="project" value="LOCAL" />
       <updated>1607435333258</updated>
     </task>
-    <task id="LOCAL-00058" summary="Ran vote prediction using: &quot;predictions_alexnet_5&quot;,  &quot;predictions_wideResNet_3&quot;, &quot;predictions_mobilenetv2_10&quot;">
-      <created>1607435757193</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1607435757193</updated>
-    </task>
-    <option name="localTasksCounter" value="59" />
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,6 +571,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Save model after each epoch, so model is saved if training is interrupted." />
     <MESSAGE value="Added more in-file documentation." />
     <MESSAGE value="Added option to continue training a model on more epochs" />
     <MESSAGE value="Added trained models to gitignore, as the files are to large for github" />
@@ -595,7 +596,6 @@
     <MESSAGE value="Added option to get top-n labels when classifying" />
     <MESSAGE value="." />
     <MESSAGE value="Added prediction ranking, works with variable top_k size" />
-    <MESSAGE value="Ran vote prediction using: &quot;predictions_alexnet_5&quot;,  &quot;predictions_wideResNet_3&quot;, &quot;predictions_mobilenetv2_10&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ran vote prediction using: &quot;predictions_alexnet_5&quot;,  &quot;predictions_wideResNet_3&quot;, &quot;predictions_mobilenetv2_10&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added prediction ranking, works with variable top_k size" />
   </component>
 </project>
