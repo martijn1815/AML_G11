@@ -188,13 +188,6 @@
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
     </task>
-    <task id="LOCAL-00017" summary="Added dropout layers">
-      <created>1606946863798</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1606946863798</updated>
-    </task>
     <task id="LOCAL-00018" summary="Ran 30 epochs, with dropout layers">
       <created>1606996481437</created>
       <option name="number" value="00018" />
@@ -531,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607443637838</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Added comment">
+      <created>1607443997280</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1607443997281</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed solution to predictions&#10;Predictions on squeezenet, 1 epoch" />
     <MESSAGE value="Slight changes" />
     <MESSAGE value="Trained squeezenet on 2 epochs" />
     <MESSAGE value="Implemented ResNet101" />
@@ -597,6 +596,7 @@
     <MESSAGE value="." />
     <MESSAGE value="Spelling mistake" />
     <MESSAGE value="Ranked using: &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ranked using: &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
+    <MESSAGE value="Added comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comment" />
   </component>
 </project>
