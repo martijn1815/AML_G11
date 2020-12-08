@@ -70,7 +70,7 @@ def most_frequent(List):
 
 
 def write_voted_predictions(dict, os_system="MacOs"):
-    if os_system == "MacOS":
+    if os_system == "MacOs":
         dir_os = "predictions/"
     else:
         dir_os = "predictions\\"
@@ -118,9 +118,9 @@ def write_rank_predictions(dict, top_k, os_system="MacOs"):
 
 def main(argv):
     os_system = "MacOs"
-    files = ["predictions_resnet_2",
-             "predictions_squeezenet_2_top3",
-             "predictions_mobilenet_2"]
+    files = ["predictions_alexnet_5",
+             "predictions_wideResNet_3",
+             "predictions_mobilenetv2_10"]
 
     predictions_dict = load_files(files, os_system=os_system)
     top_k = get_top_k(files)

@@ -19,8 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,13 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00008" summary="First predictions from pytorch CNN">
-      <created>1606769717618</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1606769717618</updated>
     </task>
     <task id="LOCAL-00009" summary="Deleted due to large size">
       <created>1606769926686</created>
@@ -531,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607432393197</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Added prediction ranking, works with variable top_k size">
+      <created>1607435333258</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1607435333258</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented the use of pre-trained models" />
     <MESSAGE value="Save model after each epoch, so model is saved if training is interrupted." />
     <MESSAGE value="Added more in-file documentation." />
     <MESSAGE value="Added option to continue training a model on more epochs" />
@@ -597,6 +595,7 @@
     <MESSAGE value="Set my model" />
     <MESSAGE value="Added option to get top-n labels when classifying" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Added prediction ranking, works with variable top_k size" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added prediction ranking, works with variable top_k size" />
   </component>
 </project>
