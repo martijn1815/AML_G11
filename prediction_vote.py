@@ -132,9 +132,9 @@ def write_rank_predictions(dict, top_k, os_system="MacOs"):
 def main(argv):
     os_system = "MacOs"
     # For best results put the files in order of accuracy, from best too worst:
-    files = ["predictions_resnet101_org_9",
-             "predictions_mobilenetv2_25",
-             "predictions_squeezenet_org_7"]
+    files = ["predictions_resnet101_org_9_top3",
+             "predictions_augmented_mobilenet_25_top3",
+             "predictions_squeezenet_7_top3"]
 
     predictions_dict = load_files(files, os_system=os_system)
     top_k = get_top_k(files)
