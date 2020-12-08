@@ -107,8 +107,8 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
                                           transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
+                                          transforms.Normalize((0.485, 0.456, 0.406),
+                                                               (0.229, 0.224, 0.225))])
     data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
 
     split = int(np.floor(valid_size))
@@ -141,8 +141,8 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
                                           transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
+                                          transforms.Normalize((0.485, 0.456, 0.406),
+                                                               (0.229, 0.224, 0.225))])
 
     random_transform = transforms.Compose([transforms.ToPILImage(),
                                            transforms.RandomCrop(64, padding=4),
@@ -150,8 +150,8 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
                                            transforms.CenterCrop(224),
                                            transforms.ColorJitter(0,0,0,0),
                                            transforms.ToTensor(),
-                                           transforms.Normalize((0.5, 0.5, 0.5),
-                                                                (0.5, 0.5, 0.5))])
+                                           transforms.Normalize((0.485, 0.456, 0.406),
+                                                                (0.229, 0.224, 0.225))])
 
     transformed_dataset = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
     if extra == True:
