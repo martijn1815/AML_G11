@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00018" summary="Ran 30 epochs, with dropout layers">
-      <created>1606996481437</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1606996481437</updated>
     </task>
     <task id="LOCAL-00019" summary="Implemented the use of pre-trained models">
       <created>1606996549463</created>
@@ -530,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607443997281</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Added overlap for top_k (k&gt;1)">
+      <created>1607444814399</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1607444814399</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Slight changes" />
     <MESSAGE value="Trained squeezenet on 2 epochs" />
     <MESSAGE value="Implemented ResNet101" />
     <MESSAGE value="Implemented Wide ResNet101" />
@@ -596,9 +595,7 @@
     <MESSAGE value="Spelling mistake" />
     <MESSAGE value="Ranked using: &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Added comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comment" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/AML_G11$prediction_vote.coverage" NAME="prediction_vote Coverage Results" MODIFIED="1607272840673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <MESSAGE value="Added overlap for top_k (k&gt;1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added overlap for top_k (k&gt;1)" />
   </component>
 </project>
