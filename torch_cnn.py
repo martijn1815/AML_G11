@@ -341,11 +341,12 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
 
     # Load Data:
     print("Loading data:", end=" ")
-    scale_transform = transforms.Compose([transforms.Resize(224),
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(224),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
+                                          transforms.Normalize((0.485, 0.456, 0.406),
+                                                               (0.229, 0.224, 0.225))])
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     print("Done")
