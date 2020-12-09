@@ -41,7 +41,7 @@ class DatasetTorch(Dataset):
     def __getitem__(self, index):
         img_path = os.path.join(self.root_dir, self.annotations.iloc[index, 0])
         image = io.imread(img_path)
-        y_label = torch.tensor(int(self.annotations.iloc[index, 1]))
+        y_label = torch.tensor(int(self.annotations.iloc[index, 1])-1)
 
         if self.transform:
             image = self.transform(image)
@@ -64,7 +64,7 @@ class Net(nn.Module):
 
         self.fc1 = nn.Linear(16*53*53, 512)
         self.fc2 = nn.Linear(512, 128)
-        self.fc3 = nn.Linear(128, 81)
+        self.fc3 = nn.Linear(128, 80)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))  # Layer1
@@ -382,7 +382,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
         for item in list_pred:
             f.write("{0}".format(item[0]))
             for x in item[1]:
-                f.write(",{0}".format(x))
+                f.write(",{0}".format(x+1))
             f.write("\n")
     print("Done")
 
@@ -398,18 +398,18 @@ def main(argv):
 
     # Squeezenet:
     model = models.squeezenet1_0(pretrained=True)
-    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
     for i, child in enumerate(model.features.children()):
            for param in child.parameters():
                param.requires_grad = False
 
     # ResNet:
     #model = models.resnet101(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
+    #model.fc = nn.Linear(2048, 80, bias=True)
 
     # ResNet Adjusted by Martijn:
     #model = models.resnet34(pretrained=True)
-    #model.fc = nn.Linear(512, 81, bias=True)
+    #model.fc = nn.Linear(512, 80, bias=True)
     # Freeze all layers before the last fully connected layer:
     #for i, child in enumerate(model.children()):
     #    if i < 7:
@@ -423,11 +423,11 @@ def main(argv):
 
     # Wide ResNet:
     #model = models.wide_resnet101_2(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
+    #model.fc = nn.Linear(2048, 80, bias=True)
 
     # Mobilenet V2:
     #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model.classifier[1] = nn.Linear(1280, 80, bias=True)
     # Freeze all layers before the last fully connected layer:
     #for i, child in enumerate(model.features.children()):
     #    if i < 17:
@@ -436,23 +436,23 @@ def main(argv):
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model.classifier[1] = nn.Linear(1280, 80, bias=True)
 
     # VGG19:
     #model = models.vgg19_bn(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # VGG16:
     #model = models.vgg16(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # Inception V3:
     #model = models.inception_v3(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     #print(model)
 
