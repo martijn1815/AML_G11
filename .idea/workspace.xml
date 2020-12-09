@@ -69,7 +69,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.torch_cnn">
+  <component name="RunManager" selected="Python.prediction_vote">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AML_G11" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -166,8 +166,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.torch_cnn" />
         <item itemvalue="Python.prediction_vote" />
+        <item itemvalue="Python.torch_cnn" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
