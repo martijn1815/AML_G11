@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,27 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00024" summary="Loss graphs">
-      <created>1607001073024</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1607001073024</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Changed solution to predictions&#10;Predictions on squeezenet, 1 epoch">
-      <created>1607001718847</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1607001718847</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Slight changes">
-      <created>1607001737866</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1607001737866</updated>
     </task>
     <task id="LOCAL-00027" summary="Trained squeezenet on 2 epochs">
       <created>1607011610485</created>
@@ -531,7 +509,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607519727181</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Freezed fully connected layers for squeezenet except the last 2">
+      <created>1607521006994</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1607521006994</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Freezed fully connected layers for mobilenet except the last 2">
+      <created>1607521034201</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1607521034201</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Freezed fully connected layers for mobilenet except the last 2">
+      <created>1607521039332</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1607521039332</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,8 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Mobilenet, 2 epochs" />
-    <MESSAGE value="Added VGG and gpu usages for classifing" />
     <MESSAGE value="renamed" />
     <MESSAGE value="added a print statement for debugging error Jop" />
     <MESSAGE value="Fixed apple/windows bug" />
@@ -597,6 +594,8 @@
     <MESSAGE value="Set it to ranking" />
     <MESSAGE value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Added an adjusted ResNet34 model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added an adjusted ResNet34 model" />
+    <MESSAGE value="Freezed fully connected layers for squeezenet except the last 2" />
+    <MESSAGE value="Freezed fully connected layers for mobilenet except the last 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Freezed fully connected layers for mobilenet except the last 2" />
   </component>
 </project>
