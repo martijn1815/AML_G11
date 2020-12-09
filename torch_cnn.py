@@ -429,8 +429,13 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    # Freeze all layers before the last fully connected layer:
+    for i, child in enumerate(model.features.children()):
+        if i < 17:
+            for param in child.parameters():
+                param.requires_grad = False
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)

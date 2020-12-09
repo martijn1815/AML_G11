@@ -188,13 +188,6 @@
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
     </task>
-    <task id="LOCAL-00023" summary="Added trained models to gitignore, as the files are to large for github">
-      <created>1606999459727</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1606999459727</updated>
-    </task>
     <task id="LOCAL-00024" summary="Loss graphs">
       <created>1607001073024</created>
       <option name="number" value="00024" />
@@ -531,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607513942269</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Added an adjusted ResNet34 model">
+      <created>1607519727180</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1607519727181</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented Mnasnet" />
     <MESSAGE value="Mobilenet, 2 epochs" />
     <MESSAGE value="Added VGG and gpu usages for classifing" />
     <MESSAGE value="renamed" />
@@ -597,6 +596,7 @@
     <MESSAGE value="Voted predictions using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_mobilenetv2_25&quot;, &quot;predictions_squeezenet_org_7&quot;" />
     <MESSAGE value="Set it to ranking" />
     <MESSAGE value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
+    <MESSAGE value="Added an adjusted ResNet34 model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added an adjusted ResNet34 model" />
   </component>
 </project>
