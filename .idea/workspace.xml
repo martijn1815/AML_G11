@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,13 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00034" summary="Added VGG and gpu usages for classifing">
-      <created>1607094952923</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1607094952923</updated>
     </task>
     <task id="LOCAL-00035" summary="renamed">
       <created>1607094997211</created>
@@ -531,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607538460932</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;">
+      <created>1607539146698</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1607539146698</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Annoying .idea dir" />
     <MESSAGE value="Changed name to include model and num. epochs" />
     <MESSAGE value="Changed dropout2" />
     <MESSAGE value="Set my model" />
@@ -597,6 +595,7 @@
     <MESSAGE value="Changed scale_transform to the new one in the classify function" />
     <MESSAGE value="put scale transform infunction, so when changed it is changed for all" />
     <MESSAGE value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;" />
   </component>
 </project>

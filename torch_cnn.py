@@ -301,10 +301,14 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
 
     # Load Data:
     print("Loading data:", end=" ")
-    _, test_loader = load_train_validate_data('train_labels.csv',
-                                              'train_set/train_set',
-                                              batch_size,
-                                              valid_size=100)
+    #_, test_loader = load_train_validate_data('train_labels.csv',
+    #                                          'train_set/train_set',
+    #                                          batch_size,
+    #                                          valid_size=100)
+    _, val_loader = load_train_validate_data_2('train_labels.csv',
+                                               'train_set/train_set',
+                                               batch_size,
+                                               extra=True)
     print("Done")
 
     # Load trained CNN:
