@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.prediction_vote">
+  <component name="RunManager" selected="Python.torch_cnn">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AML_G11" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -153,7 +153,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/torch_cnn.py" />
-      <option name="PARAMETERS" value="time" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -169,8 +169,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.prediction_vote" />
         <item itemvalue="Python.torch_cnn" />
+        <item itemvalue="Python.prediction_vote" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -187,13 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00022" summary="Added option to continue training a model on more epochs">
-      <created>1606999267802</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1606999267802</updated>
     </task>
     <task id="LOCAL-00023" summary="Added trained models to gitignore, as the files are to large for github">
       <created>1606999459727</created>
@@ -531,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607464526397</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;">
+      <created>1607513942269</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1607513942269</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented Alexnet" />
     <MESSAGE value="Implemented Mnasnet" />
     <MESSAGE value="Mobilenet, 2 epochs" />
     <MESSAGE value="Added VGG and gpu usages for classifing" />
@@ -597,6 +596,7 @@
     <MESSAGE value="Ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Voted predictions using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_mobilenetv2_25&quot;, &quot;predictions_squeezenet_org_7&quot;" />
     <MESSAGE value="Set it to ranking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set it to ranking" />
+    <MESSAGE value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
   </component>
 </project>

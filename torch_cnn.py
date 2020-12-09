@@ -59,7 +59,7 @@ class Net(nn.Module):
 
         self.pool = nn.MaxPool2d(2, 2)
 
-        self.dropout1 = nn.Dropout(p=0.2)
+        self.dropout1 = nn.Dropout(p=0.5)
         self.dropout2 = nn.Dropout(p=0.1)
 
         self.fc1 = nn.Linear(16*53*53, 512)
@@ -410,13 +410,27 @@ def main(argv):
     #model = models.resnet101(pretrained=True)
     #model.fc = nn.Linear(2048, 81, bias=True)
 
+    # ResNet Adjusted by Martijn:
+    model = models.resnet34(pretrained=True)
+    model.fc = nn.Linear(512, 81, bias=True)
+    # Freeze all layers before the last fully connected layer:
+    for i, child in enumerate(model.children()):
+        if i < 7:
+            for param in child.parameters():
+                param.requires_grad = False
+    # Add a dropout layer:
+    model.layer1 = nn.Sequential(
+        nn.Dropout(0.5),
+        model.layer1
+    )
+
     # Wide ResNet:
     #model = models.wide_resnet101_2(pretrained=True)
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    model = models.mobilenet_v2(pretrained=True)
-    model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model = models.mobilenet_v2(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -438,17 +452,16 @@ def main(argv):
     #model = models.inception_v3(pretrained=True)
     #model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
-
     #print(model)
 
     ''' Run model '''
-    # pytorch_cnn_train(model, num_epochs=25)
+    pytorch_cnn_train(model, num_epochs=25)
     # for i in range(0,25):
     #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
     #     print(model_file)
-    model_file = './models/Mobilenet_augmented+original_loop/MN_augmented_loop_25'
+    #model_file = './models/Mobilenet_augmented+original_loop/MN_augmented_loop_25'
     # pytorch_cnn_test(model, model_file=model_file)
-    pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
+    #pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
