@@ -457,7 +457,7 @@ def main(argv):
     #model = models.inception_v3(pretrained=True)
     #model.classifier[6] = nn.Linear(4096, 81, bias=True)
 
-    print(model)
+    #print(model)
 
     ''' Run model '''
     pytorch_cnn_train(model, num_epochs=25)
