@@ -411,18 +411,18 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # ResNet Adjusted by Martijn:
-    model = models.resnet34(pretrained=True)
-    model.fc = nn.Linear(512, 81, bias=True)
+    #model = models.resnet34(pretrained=True)
+    #model.fc = nn.Linear(512, 81, bias=True)
     # Freeze all layers before the last fully connected layer:
-    for i, child in enumerate(model.children()):
-        if i < 7:
-            for param in child.parameters():
-                param.requires_grad = False
+    #for i, child in enumerate(model.children()):
+    #    if i < 7:
+    #        for param in child.parameters():
+    #            param.requires_grad = False
     # Add a dropout layer:
-    model.layer1 = nn.Sequential(
-        nn.Dropout(0.5),
-        model.layer1
-    )
+    #model.layer1 = nn.Sequential(
+    #    nn.Dropout(0.5),
+    #    model.layer1
+    #)
 
     # Wide ResNet:
     #model = models.wide_resnet101_2(pretrained=True)
