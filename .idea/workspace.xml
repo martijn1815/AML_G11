@@ -185,13 +185,6 @@
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
     </task>
-    <task id="LOCAL-00036" summary=".">
-      <created>1607095214844</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1607095214844</updated>
-    </task>
     <task id="LOCAL-00037" summary="added a print statement for debugging error Jop">
       <created>1607096345831</created>
       <option name="number" value="00037" />
@@ -528,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607539917847</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="Froze the feature layers of alexnet">
+      <created>1607542414574</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1607542414574</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +569,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed dropout2" />
     <MESSAGE value="Set my model" />
     <MESSAGE value="Added option to get top-n labels when classifying" />
     <MESSAGE value="Added prediction ranking, works with variable top_k size" />
@@ -594,6 +593,7 @@
     <MESSAGE value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;" />
     <MESSAGE value="Added load_train_validate_date_2 to the test function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added load_train_validate_date_2 to the test function" />
+    <MESSAGE value="Froze the feature layers of alexnet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Froze the feature layers of alexnet" />
   </component>
 </project>
