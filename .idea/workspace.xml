@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00033" summary="Mobilenet, 2 epochs">
-      <created>1607036140479</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1607036140479</updated>
     </task>
     <task id="LOCAL-00034" summary="Added VGG and gpu usages for classifing">
       <created>1607094952923</created>
@@ -530,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607535718301</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Changed labels from 1-80 to 0-79 while running and back when writing the predictions">
+      <created>1607538460932</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1607538460932</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prediction from resnet on 2 epochs" />
     <MESSAGE value="Annoying .idea dir" />
     <MESSAGE value="Changed name to include model and num. epochs" />
     <MESSAGE value="Changed dropout2" />
@@ -596,6 +596,7 @@
     <MESSAGE value="Took the load data out of the epoch loop as this was not correct" />
     <MESSAGE value="Changed scale_transform to the new one in the classify function" />
     <MESSAGE value="put scale transform infunction, so when changed it is changed for all" />
-    <option name="LAST_COMMIT_MESSAGE" value="put scale transform infunction, so when changed it is changed for all" />
+    <MESSAGE value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
   </component>
 </project>
