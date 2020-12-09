@@ -187,13 +187,6 @@
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
     </task>
-    <task id="LOCAL-00031" summary="Implemented Alexnet">
-      <created>1607013048045</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1607013048045</updated>
-    </task>
     <task id="LOCAL-00032" summary="Implemented Mnasnet">
       <created>1607013507934</created>
       <option name="number" value="00032" />
@@ -530,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607535401821</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Changed scale_transform to the new one in the classify function">
+      <created>1607535523523</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1607535523523</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added a print statement for debugging error Jop" />
     <MESSAGE value="Fixed apple/windows bug" />
     <MESSAGE value="Prediction from resnet on 2 epochs" />
     <MESSAGE value="Annoying .idea dir" />
@@ -596,6 +595,7 @@
     <MESSAGE value="Freezed fully connected layers for mobilenet except the last 2" />
     <MESSAGE value="." />
     <MESSAGE value="Took the load data out of the epoch loop as this was not correct" />
-    <option name="LAST_COMMIT_MESSAGE" value="Took the load data out of the epoch loop as this was not correct" />
+    <MESSAGE value="Changed scale_transform to the new one in the classify function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed scale_transform to the new one in the classify function" />
   </component>
 </project>

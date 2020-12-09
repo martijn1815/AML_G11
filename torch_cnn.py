@@ -93,6 +93,16 @@ def get_conv2_shape(images):
     print(x.shape)
 
 
+def get_scale_transform():
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(224),
+                                          transforms.CenterCrop(224),
+                                          transforms.ToTensor(),
+                                          transforms.Normalize((0.485, 0.456, 0.406),
+                                                               (0.229, 0.224, 0.225))])
+    return scale_transform
+
+
 def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
     """
     Loads data from image directory and a csv_file for labels into data loaders
@@ -103,12 +113,7 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
     :return train_loader:   pytorch dataloader
             val_loader:     pytorch dataloader
     """
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((0.485, 0.456, 0.406),
-                                                               (0.229, 0.224, 0.225))])
+    scale_transform = get_scale_transform()
     data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
 
     split = int(np.floor(valid_size))
@@ -136,14 +141,7 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
             val_loader:     pytorch dataloader
     """
 
-
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((0.485, 0.456, 0.406),
-                                                               (0.229, 0.224, 0.225))])
-
+    scale_transform = get_scale_transform()
     random_transform = transforms.Compose([transforms.ToPILImage(),
                                            transforms.RandomCrop(64, padding=4),
                                            transforms.Resize(224),
@@ -159,7 +157,6 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
         data_set = torch.utils.data.ConcatDataset([transformed_dataset, original_data_set])
     else:
         data_set = transformed_dataset
-
 
     split = int(np.floor(valid_size))
     indices = shuffle(list(range(len(data_set))), random_state=0)
@@ -341,12 +338,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
 
     # Load Data:
     print("Loading data:", end=" ")
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize((0.485, 0.456, 0.406),
-                                                               (0.229, 0.224, 0.225))])
+    scale_transform = get_scale_transform()
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     print("Done")
