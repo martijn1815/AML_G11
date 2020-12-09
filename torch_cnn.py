@@ -14,6 +14,7 @@ from skimage import io
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
+import time
 
 import torch
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
@@ -202,9 +203,9 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     learning_rate = 0.001
 
     # print("Loading data:", end=" ")
-    train_loader, val_loader = load_train_validate_data('train_labels.csv',
-                                                        'train_set/train_set',
-                                                        batch_size)
+    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
+    #                                                     'train_set/train_set',
+    #                                                     batch_size)
     # train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
     #                                                       'train_set/train_set',
     #                                                       batch_size, False)
@@ -232,7 +233,17 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     print_every = 100
     train_losses, val_losses = [], []
 
+    start = time.time()
     for epoch in range(num_epochs):  # loop over the dataset multiple times
+        print("Loading data:", end=" ")
+        # train_loader, val_loader = load_train_validate_data('train_labels.csv',
+        #                                                     'train_set/train_set',
+        #                                                     batch_size)
+        train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+                                                              'train_set/train_set',
+                                                              batch_size, extra = True)
+        print("Done")
+
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
             #get_conv2_shape(images)
@@ -269,17 +280,18 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
                 train_losses.append(running_loss / len(train_loader))
                 val_losses.append(val_loss / len(val_loader))
                 print('Epoch [{}/{}], Step [{}/{}], Train loss: {:.4f}, '
-                      'Test loss: {:.4f}, Test accuracy: {:.3f}'.format(epoch+1, num_epochs,
+                      'Test loss: {:.4f}, Test accuracy: {:.3f}, Duration: {:.3f} seconds from start'.format(epoch+1, num_epochs,
                                                                         i+1, len(train_loader),
                                                                         running_loss / print_every,
                                                                         val_loss / len(val_loader),
-                                                                        accuracy / len(val_loader)))
+                                                                        accuracy / len(val_loader),
+                                                                        time.time() - start))
                 running_loss = 0
                 model.train()
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = 'MN_org_{}_e.pth'.format(epoch)
+        PATH = 'MN_org_new_aug_{}_e.pth'.format(epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -411,18 +423,18 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # ResNet Adjusted by Martijn:
-    model = models.resnet34(pretrained=True)
-    model.fc = nn.Linear(512, 81, bias=True)
-    # Freeze all layers before the last fully connected layer:
-    for i, child in enumerate(model.children()):
-        if i < 7:
-            for param in child.parameters():
-                param.requires_grad = False
-    # Add a dropout layer:
-    model.layer1 = nn.Sequential(
-        nn.Dropout(0.5),
-        model.layer1
-    )
+    # model = models.resnet34(pretrained=True)
+    # model.fc = nn.Linear(512, 81, bias=True)
+    # # Freeze all layers before the last fully connected layer:
+    # for i, child in enumerate(model.children()):
+    #     if i < 7:
+    #         for param in child.parameters():
+    #             param.requires_grad = False
+    # # Add a dropout layer:
+    # model.layer1 = nn.Sequential(
+    #     nn.Dropout(0.5),
+    #     model.layer1
+    # )
 
     # Wide ResNet:
     #model = models.wide_resnet101_2(pretrained=True)
