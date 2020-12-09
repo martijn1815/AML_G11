@@ -187,20 +187,6 @@
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
     </task>
-    <task id="LOCAL-00027" summary="Trained squeezenet on 2 epochs">
-      <created>1607011610485</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1607011610485</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Implemented ResNet101">
-      <created>1607011632171</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1607011632171</updated>
-    </task>
     <task id="LOCAL-00029" summary="Implemented Wide ResNet101">
       <created>1607011810716</created>
       <option name="number" value="00029" />
@@ -530,7 +516,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607521039332</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Freezed fully connected layers for mobilenet except the last 2">
+      <created>1607527411206</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1607527411206</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Freezed fully connected layers for mobilenet except the last 2">
+      <created>1607527468151</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1607527468151</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
