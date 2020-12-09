@@ -96,11 +96,11 @@ def write_voted_predictions(dict, os_system="MacOs"):
     print("Done")
 
 
-def rank_predictions(dict, top_k):
+def rank_predictions(predictions_dict, top_k):
     ranked = []
 
     print("Ranking predictions:", end=" ")
-    for key, value in dict.items():
+    for key, value in predictions_dict.items():
         score_dict = defaultdict(int)
         for v in value:
             for i, pred in enumerate(v):
@@ -113,16 +113,38 @@ def rank_predictions(dict, top_k):
     return ranked
 
 
-def write_rank_predictions(dict, top_k, os_system="MacOs"):
+def rank_weighted_predictions(predictions_dict, weights, top_k):
+    ranked = []
+
+    print("Ranking predictions:", end=" ")
+    for key, value in predictions_dict.items():
+        score_dict = defaultdict(int)
+        for i, v in enumerate(value):
+            for j, pred in enumerate(v):
+                score_dict[pred] += (top_k - j) * weights[i]
+        prediction = max(score_dict.items(), key=operator.itemgetter(1))[0]
+        #print(prediction, score_dict)
+        ranked.append([key, prediction])
+    print("Done")
+
+    return ranked
+
+
+def write_rank_predictions(predictions_dict, top_k, weights=None, os_system="MacOs"):
     if os_system == "MacOs":
         dir_os = "predictions/"
     else:
         dir_os = "predictions\\"
 
-    ranked = rank_predictions(dict, top_k)
+    if weights:
+        file_name = "predictions_ranked_weighted"
+        ranked = rank_weighted_predictions(predictions_dict, weights, top_k)
+    else:
+        file_name = "predictions_ranked"
+        ranked = rank_predictions(predictions_dict, top_k)
 
     print("Writing predictions:", end=" ")
-    with open("{0}predictions_ranked.csv".format(dir_os), "w") as f:
+    with open("{0}{1}.csv".format(dir_os, file_name), "w") as f:
         f.write("img_name,label\n")
         for output in ranked:
             f.write("{0},{1}\n".format(output[0], output[1]))
@@ -131,10 +153,12 @@ def write_rank_predictions(dict, top_k, os_system="MacOs"):
 
 def main(argv):
     os_system = "MacOs"
-    # For best results put the files in order of accuracy, from best too worst:
+    # For best results (with out weigths) put the files in order of accuracy, from best too worst:
     files = ["predictions_resnet101_org_9_top3",
              "predictions_augmented_mobilenet_25_top3",
              "predictions_squeezenet_7_top3"]
+    # Use accuracy as weight:
+    weights = [0.64824, 0.63595, 0.48059]
 
     predictions_dict = load_files(files, os_system=os_system)
     top_k = get_top_k(files)
@@ -144,7 +168,7 @@ def main(argv):
         write_voted_predictions(predictions_dict, os_system=os_system)
     else:
         print_overlap(files, predictions_dict, top1=False)
-        write_rank_predictions(predictions_dict, top_k, os_system=os_system)
+        write_rank_predictions(predictions_dict, top_k, weights=weights, os_system=os_system)
 
 
 if __name__ == "__main__":
