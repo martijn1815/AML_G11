@@ -14,6 +14,7 @@ from skimage import io
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
+import time
 
 import torch
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
@@ -229,6 +230,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     running_loss = 0
     print_every = 100
     train_losses, val_losses = [], []
+    starttime = time.time()
 
     for epoch in range(num_epochs):  # loop over the dataset multiple times
         for i, (images, labels) in enumerate(train_loader):
@@ -267,17 +269,19 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
                 train_losses.append(running_loss / len(train_loader))
                 val_losses.append(val_loss / len(val_loader))
                 print('Epoch [{}/{}], Step [{}/{}], Train loss: {:.4f}, '
-                      'Test loss: {:.4f}, Test accuracy: {:.3f}'.format(epoch+1, num_epochs,
+                      'Test loss: {:.4f}, Test accuracy: {:.3f}, '
+                      'Total running time: {:.1f} seconds'.format(epoch+1, num_epochs,
                                                                         i+1, len(train_loader),
                                                                         running_loss / print_every,
                                                                         val_loss / len(val_loader),
-                                                                        accuracy / len(val_loader)))
+                                                                        accuracy / len(val_loader),
+                                                                        time.time() - starttime))
                 running_loss = 0
                 model.train()
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = 'MN_org_{}_e.pth'.format(epoch)
+        PATH = 'squeezenet_fr_aug_{}.pth'.format(epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -457,7 +461,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=10)
+    pytorch_cnn_train(model, num_epochs=15)
     # for i in range(0,25):
     #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
     #     print(model_file)
