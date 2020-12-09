@@ -305,10 +305,10 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     #                                          'train_set/train_set',
     #                                          batch_size,
     #                                          valid_size=100)
-    _, val_loader = load_train_validate_data_2('train_labels.csv',
-                                               'train_set/train_set',
-                                               batch_size,
-                                               extra=True)
+    _, test_loader = load_train_validate_data_2('train_labels.csv',
+                                                'train_set/train_set',
+                                                batch_size,
+                                                extra=True)
     print("Done")
 
     # Load trained CNN:
@@ -445,9 +445,6 @@ def main(argv):
     # Alexnet:
     model = models.alexnet(pretrained=True)
     model.classifier[6] = nn.Linear(4096, 80, bias=True)
-    for i, child in enumerate(model.features.children()):
-           for param in child.parameters():
-               param.requires_grad = False
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
