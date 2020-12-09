@@ -157,10 +157,9 @@ def main(argv):
     files = ["predictions_resnet101_org_9_top3",
              "predictions_augmented_mobilenet_25_top3",
              "predictions_squeezenet_7_top3",
-             "predictions_resnet34_freeze_org_19_top3",
-             "predictions_wideresNet_3"]
+             "predictions_resnet34_freeze_org_19_top3"]
     # Use accuracy as weight:
-    weights = [0.64824, 0.63595, 0.48059, 0.48151, 0.55808]
+    weights = [0.64824, 0.63595, 0.48059, 0.48151]
 
     predictions_dict = load_files(files, os_system=os_system)
     top_k = get_top_k(files)
