@@ -405,11 +405,11 @@ def main(argv):
     # model = Net()
 
     # Squeezenet:
-    model = models.squeezenet1_0(pretrained=True)
-    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
-    for i, child in enumerate(model.features.children()):
-           for param in child.parameters():
-               param.requires_grad = False
+    #model = models.squeezenet1_0(pretrained=True)
+    #model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
+    #for i, child in enumerate(model.features.children()):
+    #       for param in child.parameters():
+    #           param.requires_grad = False
 
     # ResNet:
     #model = models.resnet101(pretrained=True)
@@ -443,8 +443,11 @@ def main(argv):
     #            param.requires_grad = False
 
     # Alexnet:
-    #model = models.alexnet(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
+    model = models.alexnet(pretrained=True)
+    model.classifier[6] = nn.Linear(4096, 80, bias=True)
+    for i, child in enumerate(model.features.children()):
+           for param in child.parameters():
+               param.requires_grad = False
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
