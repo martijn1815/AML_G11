@@ -125,7 +125,7 @@ def load_train_validate_data(csv_file, root_dir, batch_size, valid_size=100):
     return train_loader, val_loader
 
 
-def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, extra = True):
+def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, extra=True):
     """
     Loads data from image directory and a csv_file for labels into data loaders
     :param csv_file:        string
@@ -201,6 +201,16 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     batch_size = 10
     learning_rate = 0.001
 
+    # Load Data:
+    print("Loading data:", end=" ")
+    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
+    #                                                    'train_set/train_set',
+    #                                                    batch_size)
+    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+                                                          'train_set/train_set',
+                                                          batch_size,
+                                                          extra=True)
+    print("Done")
 
     # To continue training a model:
     if model_file:
@@ -214,7 +224,6 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 
-
     # Train network
     print("Training CNN:")
     model.train()
@@ -225,16 +234,6 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
     train_losses, val_losses = [], []
 
     for epoch in range(num_epochs):  # loop over the dataset multiple times
-
-        print("Loading data:", end=" ")
-        train_loader, val_loader = load_train_validate_data('train_labels.csv',
-                                                            'train_set/train_set',
-                                                            batch_size)
-        # train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-        #                                                       'train_set/train_set',
-        #                                                       batch_size, False)
-        print("Done")
-        
         for i, (images, labels) in enumerate(train_loader):
             #print("Size:", images.shape, "Label:", labels)
             #get_conv2_shape(images)
@@ -405,8 +404,11 @@ def main(argv):
     # model = Net()
 
     # Squeezenet:
-    # model = models.squeezenet1_0(pretrained=True)
-    # model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    model = models.squeezenet1_0(pretrained=True)
+    model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
+    for i, child in enumerate(model.features.children()):
+           for param in child.parameters():
+               param.requires_grad = False
 
     # ResNet:
     #model = models.resnet101(pretrained=True)
@@ -431,13 +433,13 @@ def main(argv):
     #model.fc = nn.Linear(2048, 81, bias=True)
 
     # Mobilenet V2:
-    model = models.mobilenet_v2(pretrained=True)
-    model.classifier[1] = nn.Linear(1280, 81, bias=True)
+    #model = models.mobilenet_v2(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
     # Freeze all layers before the last fully connected layer:
-    for i, child in enumerate(model.features.children()):
-        if i < 17:
-            for param in child.parameters():
-                param.requires_grad = False
+    #for i, child in enumerate(model.features.children()):
+    #    if i < 17:
+    #        for param in child.parameters():
+    #            param.requires_grad = False
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -462,7 +464,7 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=25)
+    pytorch_cnn_train(model, num_epochs=10)
     # for i in range(0,25):
     #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
     #     print(model_file)

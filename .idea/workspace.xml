@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00029" summary="Implemented Wide ResNet101">
-      <created>1607011810716</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1607011810716</updated>
     </task>
     <task id="LOCAL-00030" summary="Implemented Alexnet">
       <created>1607012922495</created>
@@ -530,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607527468151</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary=".">
+      <created>1607533462515</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1607533462515</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -584,7 +585,6 @@
     <MESSAGE value="Renamed and replaced" />
     <MESSAGE value="Set test data to validation data" />
     <MESSAGE value="," />
-    <MESSAGE value="." />
     <MESSAGE value="Spelling mistake" />
     <MESSAGE value="Ranked using: &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Added comment" />
@@ -596,6 +596,7 @@
     <MESSAGE value="Added an adjusted ResNet34 model" />
     <MESSAGE value="Freezed fully connected layers for squeezenet except the last 2" />
     <MESSAGE value="Freezed fully connected layers for mobilenet except the last 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Freezed fully connected layers for mobilenet except the last 2" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
