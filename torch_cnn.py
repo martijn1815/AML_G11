@@ -95,7 +95,7 @@ def get_conv2_shape(images):
 
 
 def get_scale_transform(augmented=False):
-    if augmented:
+    if not augmented:
         scale_transform = transforms.Compose([transforms.ToPILImage(),
                                               transforms.Resize(224),
                                               transforms.CenterCrop(224),
