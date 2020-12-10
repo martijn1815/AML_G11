@@ -61,7 +61,7 @@ class Net(nn.Module):
         self.pool = nn.MaxPool2d(2, 2)
 
         self.dropout1 = nn.Dropout(p=0.5)
-        self.dropout2 = nn.Dropout(p=0.1)
+        self.dropout2 = nn.Dropout(p=0.25)
 
         self.fc1 = nn.Linear(16*53*53, 512)
         self.fc2 = nn.Linear(512, 128)
@@ -203,13 +203,13 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
     # Load Data:
     print("Loading data:", end=" ")
-    train_loader, val_loader = load_train_validate_data('train_labels.csv',
-                                                        'train_set/train_set',
-                                                        batch_size)
-    #train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-    #                                                      'train_set/train_set',
-    #                                                      batch_size,
-    #                                                      extra=True)
+    #train_loader, val_loader = load_train_validate_data('train_labels.csv',
+    #                                                    'train_set/train_set',
+    #                                                    batch_size)
+    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+                                                          'train_set/train_set',
+                                                          batch_size,
+                                                          extra=True)
     print("Done")
 
     # To continue training a model:
@@ -404,7 +404,7 @@ def main(argv):
     """
     ''' Define model '''
     # Martijn's CNN:
-    # model = Net()
+    model = Net()
 
     # Squeezenet:
     #model = models.squeezenet1_0(pretrained=True)
@@ -436,13 +436,13 @@ def main(argv):
     #model.fc = nn.Linear(2048, 80, bias=True)
 
     # Mobilenet V2:
-    model = models.mobilenet_v2(pretrained=True)
-    model.classifier[1] = nn.Linear(1280, 80, bias=True)
+    #model = models.mobilenet_v2(pretrained=True)
+    #model.classifier[1] = nn.Linear(1280, 80, bias=True)
     # Freeze all layers before the last fully connected layer:
-    for i, child in enumerate(model.features.children()):
-        if i < 17:
-            for param in child.parameters():
-                param.requires_grad = False
+    #for i, child in enumerate(model.features.children()):
+    #    if i < 17:
+    #        for param in child.parameters():
+    #            param.requires_grad = False
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -467,13 +467,13 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=15)
+    pytorch_cnn_train(model, num_epochs=5)
     #for i in range(0,15):
     #     model_file = './mobilenetv2_'+str(i)
     #     print(model_file)
     #     pytorch_cnn_test(model, model_file=model_file)
-    model_file = './mobilenetv2_12'
-    pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="MacOs")
+    #model_file = './mobilenetv2_12'
+    #pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="MacOs")
 
 
 if __name__ == "__main__":
