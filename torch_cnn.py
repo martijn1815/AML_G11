@@ -96,11 +96,10 @@ def get_conv2_shape(images):
 
 def get_scale_transform():
     scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
+                                          transforms.Resize(256),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.485, 0.456, 0.406),
-                                                               (0.229, 0.224, 0.225))])
+                                          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     return scale_transform
 
 
@@ -201,13 +200,13 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
     # Load Data:
     print("Loading data:", end=" ")
-    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
-    #                                                    'train_set/train_set',
-    #                                                    batch_size)
-    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-                                                          'train_set/train_set',
-                                                          batch_size,
-                                                          extra=True)
+    train_loader, val_loader = load_train_validate_data('train_labels.csv',
+                                                        'train_set/train_set',
+                                                        batch_size)
+    #train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+    #                                                      'train_set/train_set',
+    #                                                      batch_size,
+    #                                                      extra=True)
     print("Done")
 
     # To continue training a model:
@@ -281,7 +280,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = 'squeezenet_fr_aug_{}.pth'.format(epoch)
+        PATH = 'mobilenetv2_{}.pth'.format(epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -337,6 +336,8 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
     :param model:       pytorch cnn model   (must be same model as trained model in model_file)
     :param model_file:  string              (pth-file containing a trained version of model)
     """
+    # Hyperparameters:
+    batch_size = 1
 
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -346,7 +347,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
     print("Loading data:", end=" ")
     scale_transform = get_scale_transform()
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
-    test_loader = DataLoader(test_set, batch_size=1, shuffle=False)
+    test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     print("Done")
 
     # Load trained CNN:
@@ -403,8 +404,8 @@ def main(argv):
     # model = Net()
 
     # Squeezenet:
-    model = models.squeezenet1_0(pretrained=True)
-    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
+    #model = models.squeezenet1_0(pretrained=True)
+    #model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
     #for i, child in enumerate(model.features.children()):
     #       for param in child.parameters():
     #           param.requires_grad = False
@@ -432,13 +433,13 @@ def main(argv):
     #model.fc = nn.Linear(2048, 80, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 80, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 80, bias=True)
     # Freeze all layers before the last fully connected layer:
-    #for i, child in enumerate(model.features.children()):
-    #    if i < 17:
-    #        for param in child.parameters():
-    #            param.requires_grad = False
+    for i, child in enumerate(model.features.children()):
+        if i < 17:
+            for param in child.parameters():
+                param.requires_grad = False
 
     # Alexnet:
     #model = models.alexnet(pretrained=True)
@@ -464,12 +465,12 @@ def main(argv):
 
     ''' Run model '''
     #pytorch_cnn_train(model, num_epochs=15)
-    # for i in range(0,25):
-    #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
+    #for i in range(0,15):
+    #     model_file = './mobilenetv2_'+str(i)
     #     print(model_file)
-    model_file = 'models/torch_cnn_squeezenet_2'
-    # pytorch_cnn_test(model, model_file=model_file)
-    pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="MacOs")
+    #     pytorch_cnn_test(model, model_file=model_file)
+    model_file = './mobilenetv2_12'
+    pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
