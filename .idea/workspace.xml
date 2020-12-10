@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,13 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00047" summary=".">
-      <created>1607346162046</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1607346162046</updated>
     </task>
     <task id="LOCAL-00048" summary="Changed dropout2">
       <created>1607346581930</created>
@@ -530,7 +524,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607617581607</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="ToPILImage should not be in classify function">
+      <created>1607617914419</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1607617914419</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,7 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added comment" />
     <MESSAGE value="Added overlap for top_k (k&gt;1)" />
     <MESSAGE value="Ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Voted predictions using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_mobilenetv2_25&quot;, &quot;predictions_squeezenet_org_7&quot;" />
@@ -596,6 +596,7 @@
     <MESSAGE value="Training my model once again" />
     <MESSAGE value="Improved running time" />
     <MESSAGE value="Small mistake fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small mistake fixed" />
+    <MESSAGE value="ToPILImage should not be in classify function" />
+    <option name="LAST_COMMIT_MESSAGE" value="ToPILImage should not be in classify function" />
   </component>
 </project>
