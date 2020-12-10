@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,13 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00042" summary="Annoying .idea dir">
-      <created>1607098687691</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1607098687691</updated>
     </task>
     <task id="LOCAL-00043" summary="Changed name to include model and num. epochs">
       <created>1607098750256</created>
@@ -531,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607604793498</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="fixed the transform for augmented data">
+      <created>1607605418897</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1607605418897</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Set test data to validation data" />
     <MESSAGE value="," />
     <MESSAGE value="Spelling mistake" />
     <MESSAGE value="Ranked using: &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
@@ -597,6 +595,7 @@
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;" />
     <MESSAGE value="Fixed small mistake in test function" />
     <MESSAGE value="Trying to find the error Robin has" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to find the error Robin has" />
+    <MESSAGE value="fixed the transform for augmented data" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the transform for augmented data" />
   </component>
 </project>

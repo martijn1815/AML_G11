@@ -106,7 +106,7 @@ def get_scale_transform(augmented=False):
         scale_transform = transforms.Compose([transforms.ToPILImage(),
                                               transforms.Resize(224),
                                               transforms.CenterCrop(224),
-                                             transforms.RandomHorizontalFlip(p=1),
+                                              transforms.RandomVerticalFlip(p=1),
                                               transforms.ToTensor(),
                                               transforms.Normalize([0.485, 0.456, 0.406],
                                                                    [0.229, 0.224, 0.225])])
