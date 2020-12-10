@@ -331,7 +331,7 @@ def pytorch_cnn_test(model, model_file="torch_cnn"):
     _, test_loader = load_train_validate_data_2('train_labels.csv',
                                               'train_set/train_set',
                                               batch_size,
-                                              valid_size=1000)
+                                              valid_size=100)
     print("Done")
 
     # Load trained CNN:
@@ -369,11 +369,12 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
 
     # Load Data:
     print("Loading data:", end=" ")
-    scale_transform = transforms.Compose([transforms.Resize(224),
+    scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                          transforms.Resize(255),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.5, 0.5, 0.5),
-                                                               (0.5, 0.5, 0.5))])
+                                          transforms.Normalize([0.485, 0.456, 0.406],
+                                                               [0.229, 0.224, 0.225])])
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
     print("Done")
@@ -469,8 +470,8 @@ def main(argv):
 
     #densenet
     model = models.densenet161(pretrained = True)
-    for param in model.parameters():
-        param.requires_grad = False
+    # for param in model.parameters():
+    #     param.requires_grad = False
     from collections import OrderedDict
     model.classifier = nn.Sequential(OrderedDict([
                           ('fc1', nn.Linear(2208, 500)),
@@ -485,9 +486,9 @@ def main(argv):
     # for i in range(0,25):
     #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
     #     print(model_file)
-    model_file = './Densenet_161_8_e'
+    model_file = './Densenet_161_111_e'
     pytorch_cnn_test(model, model_file=model_file)
-    # pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
+    # pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
