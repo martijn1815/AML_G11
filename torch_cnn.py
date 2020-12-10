@@ -270,14 +270,16 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
                         accuracy += torch.mean(equals.type(torch.FloatTensor)).item()
                 train_losses.append(running_loss / len(train_loader))
                 val_losses.append(val_loss / len(val_loader))
+                minutes = int((time.time() - starttime) / 60)
+                seconds = int((time.time() - starttime) % 60)
                 print('Epoch [{}/{}], Step [{}/{}], Train loss: {:.4f}, '
                       'Test loss: {:.4f}, Test accuracy: {:.3f}, '
-                      'Total running time: {:.1f} seconds'.format(epoch+1, num_epochs,
-                                                                        i+1, len(train_loader),
-                                                                        running_loss / print_every,
-                                                                        val_loss / len(val_loader),
-                                                                        accuracy / len(val_loader),
-                                                                        time.time() - starttime))
+                      'Total running time: {}m{}s'.format(epoch+1, num_epochs,
+                                                          i+1, len(train_loader),
+                                                          running_loss / print_every,
+                                                          val_loss / len(val_loader),
+                                                          accuracy / len(val_loader),
+                                                          minutes, seconds))
                 running_loss = 0
                 model.train()
 
