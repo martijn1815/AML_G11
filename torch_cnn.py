@@ -94,12 +94,22 @@ def get_conv2_shape(images):
     print(x.shape)
 
 
-def get_scale_transform():
-    scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(256),
-                                          transforms.CenterCrop(224),
-                                          transforms.ToTensor(),
-                                          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
+def get_scale_transform(augmented=False):
+    if augmented:
+        scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                              transforms.Resize(224),
+                                              transforms.CenterCrop(224),
+                                              transforms.ToTensor(),
+                                              transforms.Normalize([0.485, 0.456, 0.406],
+                                                                   [0.229, 0.224, 0.225])])
+    else:
+        scale_transform = transforms.Compose([transforms.ToPILImage(),
+                                              transforms.Resize(224),
+                                              transforms.CenterCrop(224),
+                                             transforms.RandomHorizontalFlip(p=1),
+                                              transforms.ToTensor(),
+                                              transforms.Normalize([0.485, 0.456, 0.406],
+                                                                   [0.229, 0.224, 0.225])])
     return scale_transform
 
 
@@ -142,14 +152,7 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
     """
 
     scale_transform = get_scale_transform()
-    random_transform = transforms.Compose([transforms.ToPILImage(),
-                                           transforms.RandomCrop(64, padding=4),
-                                           transforms.Resize(224),
-                                           transforms.CenterCrop(224),
-                                           transforms.ColorJitter(0,0,0,0),
-                                           transforms.ToTensor(),
-                                           transforms.Normalize((0.485, 0.456, 0.406),
-                                                                (0.229, 0.224, 0.225))])
+    random_transform = get_scale_transform(augmented=True)
 
     transformed_dataset = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
     if extra == True:
@@ -470,7 +473,7 @@ def main(argv):
     #     print(model_file)
     #     pytorch_cnn_test(model, model_file=model_file)
     model_file = './mobilenetv2_12'
-    pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="Windows")
+    pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="MacOs")
 
 
 if __name__ == "__main__":
