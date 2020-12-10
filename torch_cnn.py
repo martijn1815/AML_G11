@@ -96,11 +96,10 @@ def get_conv2_shape(images):
 
 def get_scale_transform():
     scale_transform = transforms.Compose([transforms.ToPILImage(),
-                                          transforms.Resize(224),
+                                          transforms.Resize(256),
                                           transforms.CenterCrop(224),
                                           transforms.ToTensor(),
-                                          transforms.Normalize((0.485, 0.456, 0.406),
-                                                               (0.229, 0.224, 0.225))])
+                                          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
     return scale_transform
 
 
@@ -201,13 +200,13 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
     # Load Data:
     print("Loading data:", end=" ")
-    # train_loader, val_loader = load_train_validate_data('train_labels.csv',
-    #                                                    'train_set/train_set',
-    #                                                    batch_size)
-    train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
-                                                          'train_set/train_set',
-                                                          batch_size,
-                                                          extra=True)
+    train_loader, val_loader = load_train_validate_data('train_labels.csv',
+                                                        'train_set/train_set',
+                                                        batch_size)
+    #train_loader, val_loader = load_train_validate_data_2('train_labels.csv',
+    #                                                      'train_set/train_set',
+    #                                                      batch_size,
+    #                                                      extra=True)
     print("Done")
 
     # To continue training a model:
@@ -281,7 +280,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = 'squeezenet_fr_aug_{}.pth'.format(epoch)
+        PATH = 'mobilenetv2_{}.pth'.format(epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -434,17 +433,17 @@ def main(argv):
     #model.fc = nn.Linear(2048, 80, bias=True)
 
     # Mobilenet V2:
-    #model = models.mobilenet_v2(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 80, bias=True)
+    model = models.mobilenet_v2(pretrained=True)
+    model.classifier[1] = nn.Linear(1280, 80, bias=True)
     # Freeze all layers before the last fully connected layer:
-    #for i, child in enumerate(model.features.children()):
-    #    if i < 17:
-    #        for param in child.parameters():
-    #            param.requires_grad = False
+    for i, child in enumerate(model.features.children()):
+        if i < 17:
+            for param in child.parameters():
+                param.requires_grad = False
 
     # Alexnet:
-    model = models.alexnet(pretrained=True)
-    model.classifier[6] = nn.Linear(4096, 80, bias=True)
+    #model = models.alexnet(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
@@ -465,13 +464,13 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=15)
-    # for i in range(0,25):
-    #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
+    #pytorch_cnn_train(model, num_epochs=15)
+    #for i in range(0,15):
+    #     model_file = './mobilenetv2_'+str(i)
     #     print(model_file)
-    #model_file = './models/Mobilenet_augmented+original_loop/MN_augmented_loop_25'
-    # pytorch_cnn_test(model, model_file=model_file)
-    #pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
+    #     pytorch_cnn_test(model, model_file=model_file)
+    model_file = './mobilenetv2_12'
+    pytorch_cnn_classify(model, top_k=1, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
