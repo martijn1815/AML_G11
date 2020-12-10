@@ -187,7 +187,7 @@ def show_graph(train_losses, val_losses):
     plt.show()
 
 
-def pytorch_cnn_train(model, num_epochs=1, model_file=None):
+def pytorch_cnn_train(model, num_epochs=1, model_name="model", model_file=None):
     """
     Train a pytorch cnn model (model can be pre-trained)
     :param model:       pytorch cnn model
@@ -285,7 +285,7 @@ def pytorch_cnn_train(model, num_epochs=1, model_file=None):
 
         # Save trained model after each epoch:
         print("Saving model:", end=" ")
-        PATH = 'mobilenetv2_dl2_{}.pth'.format(epoch)
+        PATH = '{}_{}.pth'.format(model_name, epoch)
         torch.save(model.state_dict(), PATH)
         print("Done")
 
@@ -474,13 +474,13 @@ def main(argv):
 
 
     ''' Run model '''
-    #pytorch_cnn_train(model, num_epochs=15)
-    model_file = './models/Alexnet/alexnet_fr_aug_14'
+    pytorch_cnn_train(model, num_epochs=15, model_name='mobilenetv2_dl2')
+    #model_file = './models/Alexnet/alexnet_fr_aug_14'
     #for i in range(0,15):
     #     model_file = './mobilenetv2_dl2_'+str(i)
     #     print(model_file)
     # pytorch_cnn_test(model, model_file=model_file)
-    pytorch_cnn_classify(model, top_k=5, model_file=model_file, os_systeem="Windows")
+    #pytorch_cnn_classify(model, top_k=5, model_file=model_file, os_systeem="Windows")
 
 
 if __name__ == "__main__":
