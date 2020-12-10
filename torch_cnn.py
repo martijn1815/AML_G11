@@ -337,8 +337,6 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
     :param model:       pytorch cnn model   (must be same model as trained model in model_file)
     :param model_file:  string              (pth-file containing a trained version of model)
     """
-    # Hyperparameters:
-    batch_size = 1
 
     # Set device:
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -348,7 +346,7 @@ def pytorch_cnn_classify(model, top_k=1, model_file="torch_cnn", os_systeem="Mac
     print("Loading data:", end=" ")
     scale_transform = get_scale_transform()
     test_set = torchvision.datasets.ImageFolder(root='test_set', transform=scale_transform)
-    test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_set, batch_size=1, shuffle=False)
     print("Done")
 
     # Load trained CNN:
@@ -405,8 +403,8 @@ def main(argv):
     # model = Net()
 
     # Squeezenet:
-    #model = models.squeezenet1_0(pretrained=True)
-    #model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
+    model = models.squeezenet1_0(pretrained=True)
+    model.classifier[1] = nn.Conv2d(512, 80, kernel_size=(1, 1), stride=(1, 1))
     #for i, child in enumerate(model.features.children()):
     #       for param in child.parameters():
     #           param.requires_grad = False
@@ -443,8 +441,8 @@ def main(argv):
     #            param.requires_grad = False
 
     # Alexnet:
-    model = models.alexnet(pretrained=True)
-    model.classifier[6] = nn.Linear(4096, 80, bias=True)
+    #model = models.alexnet(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
@@ -465,13 +463,13 @@ def main(argv):
     #print(model)
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=15)
+    #pytorch_cnn_train(model, num_epochs=15)
     # for i in range(0,25):
     #     model_file = './models/Mobilenet_augmented+original_loop/mn_Aug_org_data_'+str(i)+'_e'
     #     print(model_file)
-    #model_file = './models/Mobilenet_augmented+original_loop/MN_augmented_loop_25'
+    model_file = 'models/torch_cnn_squeezenet_2'
     # pytorch_cnn_test(model, model_file=model_file)
-    #pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="Windows")
+    pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="MacOs")
 
 
 if __name__ == "__main__":

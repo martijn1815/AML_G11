@@ -21,8 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" beforeDir="false" afterPath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +72,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.prediction_vote">
+  <component name="RunManager" selected="Python.torch_cnn">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AML_G11" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,8 +169,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.prediction_vote" />
         <item itemvalue="Python.torch_cnn" />
+        <item itemvalue="Python.prediction_vote" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -189,20 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00039" summary="Fixed apple/windows bug">
-      <created>1607097276489</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1607097276489</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Prediction from resnet on 2 epochs">
-      <created>1607098438256</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1607098438257</updated>
     </task>
     <task id="LOCAL-00041" summary="Annoying .idea dir">
       <created>1607098642661</created>
@@ -533,7 +517,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607549965623</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;">
+      <created>1607550352468</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1607550352468</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Fixed small mistake in test function">
+      <created>1607550370057</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1607550370057</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,8 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added option to get top-n labels when classifying" />
-    <MESSAGE value="Added prediction ranking, works with variable top_k size" />
     <MESSAGE value="Renamed and replaced" />
     <MESSAGE value="Set test data to validation data" />
     <MESSAGE value="," />
@@ -599,6 +595,8 @@
     <MESSAGE value="Froze the feature layers of alexnet" />
     <MESSAGE value="." />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_wideResNet_3&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_wideResNet_3&quot;" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;" />
+    <MESSAGE value="Fixed small mistake in test function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small mistake in test function" />
   </component>
 </project>
