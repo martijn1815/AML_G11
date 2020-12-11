@@ -154,12 +154,12 @@ def write_rank_predictions(predictions_dict, top_k, weights=None, os_system="Mac
 def main(argv):
     os_system = "MacOs"
     # For best results (with out weigths) put the files in order of accuracy, from best too worst:
-    files = ["predictions_resnet101_org_9",
-             "predictions_resnet101_aug_4_FIXED",
-             "predictions_augmented_mobilenet_25",
-             "predictions_mobilenet_vertflip_11",
-             "predictions_resnet34_frozen_19",
-             "predictions_squeezenet_org_7",
+    files = ["predictions_resnet101_org_9_top3",
+             "predictions_resnet101_aug_4_top3",
+             "predictions_augmented_mobilenet_25_top3",
+             "predictions_mobilenet_vertflip_11_top3",
+             "predictions_resnet34_freeze_org_19_top3",
+             "predictions_squeezenet_7_top3",
              "predictions_alexnet_5",
              "predictions_wideResNet_3"]
     # Use accuracy as weight:
