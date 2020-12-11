@@ -160,11 +160,9 @@ def main(argv):
              "predictions_mobilenet_vertflip_11_top3",
              "predictions_resnet34_freeze_org_19_top3",
              "predictions_squeezenet_7_top3",
-             "alexnet_top3"
-             "predictions_alexnet_5",
-             "predictions_wideResNet_3"]
+             "alexnet_top3"]
     # Use accuracy as weight:
-    weights = [0.64824, 0.64379, 0.63595, 0.60995, 0.48151, 0.48059, 0.46909, 0.48712, 0.55808]
+    weights = [0.64824, 0.64379, 0.63595, 0.60995, 0.48151, 0.48059, 0.46909]
 
     predictions_dict = load_files(files, os_system=os_system)
     top_k = get_top_k(files)
