@@ -59,6 +59,7 @@ class Net(nn.Module):
         self.conv2 = nn.Conv2d(6, 16, 5)
 
         self.pool = nn.MaxPool2d(2, 2)
+        self.batchnorm = nn.BatchNorm2d(16)
 
         self.dropout1 = nn.Dropout(p=0.5)
         self.dropout2 = nn.Dropout(p=0.25)
@@ -69,7 +70,7 @@ class Net(nn.Module):
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))  # Layer1
-        x = self.pool(F.relu(self.conv2(x)))  # Layer2
+        x = self.pool(F.relu(self.batchnorm(self.conv2(x))))  # Layer2
         x = x.view(-1, 16*53*53)
         x = self.dropout1(F.relu(self.fc1(x)))
         x = self.dropout2(F.relu(self.fc2(x)))
@@ -410,7 +411,7 @@ def main(argv):
     """
     ''' Define model '''
     # Martijn's CNN:
-    #model = Net()
+    model = Net()
 
     # Squeezenet:
     #model = models.squeezenet1_0(pretrained=True)
@@ -451,8 +452,8 @@ def main(argv):
     #            param.requires_grad = False
 
     # Alexnet:
-    model = models.alexnet(pretrained=True)
-    model.classifier[6] = nn.Linear(4096, 80, bias=True)
+    #model = models.alexnet(pretrained=True)
+    #model.classifier[6] = nn.Linear(4096, 80, bias=True)
 
     # Mnasnet:
     #model = models.mnasnet1_0(pretrained=True)
@@ -474,7 +475,7 @@ def main(argv):
 
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=15, model_name='mobilenetv2_dl2')
+    pytorch_cnn_train(model, num_epochs=30)
     #model_file = './models/Alexnet/alexnet_fr_aug_14'
     #for i in range(0,15):
     #     model_file = './mobilenetv2_dl2_'+str(i)
