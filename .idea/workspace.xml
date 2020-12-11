@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" beforeDir="false" afterPath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,27 +187,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00051" summary="Added option to get top-n labels when classifying">
-      <created>1607360982187</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1607360982187</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Added option to get top-n labels when classifying">
-      <created>1607361953056</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1607361953057</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Added option to get top-n labels when classifying">
-      <created>1607362588312</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1607362588312</updated>
     </task>
     <task id="LOCAL-00054" summary="Added option to get top-n labels when classifying">
       <created>1607362821396</created>
@@ -530,7 +510,28 @@
       <option name="project" value="LOCAL" />
       <updated>1607699991410</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;">
+      <created>1607700228236</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1607700228236</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;">
+      <created>1607700297882</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1607700297882</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top5&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top5&quot;, &quot;predictions_resnet34_freeze_org_19_top5&quot;, &quot;predictions_squeezenet_7_top3&quot;">
+      <created>1607700469077</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1607700469077</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,9 +572,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Voted predictions using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_mobilenetv2_25&quot;, &quot;predictions_squeezenet_org_7&quot;" />
-    <MESSAGE value="Set it to ranking" />
-    <MESSAGE value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Added an adjusted ResNet34 model" />
     <MESSAGE value="Freezed fully connected layers for squeezenet except the last 2" />
     <MESSAGE value="Freezed fully connected layers for mobilenet except the last 2" />
@@ -596,6 +594,9 @@
     <MESSAGE value="Weighted ranking with: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
     <MESSAGE value="Added naming option for save file in train function" />
     <MESSAGE value="Gave my own model a last try with batch normalisation, 30 epochs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gave my own model a last try with batch normalisation, 30 epochs" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top5&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top5&quot;, &quot;predictions_resnet34_freeze_org_19_top5&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top5&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top5&quot;, &quot;predictions_resnet34_freeze_org_19_top5&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
   </component>
 </project>
