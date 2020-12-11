@@ -475,13 +475,13 @@ def main(argv):
 
 
     ''' Run model '''
-    pytorch_cnn_train(model, num_epochs=30)
-    #model_file = './models/Alexnet/alexnet_fr_aug_14'
-    #for i in range(0,15):
-    #     model_file = './mobilenetv2_dl2_'+str(i)
-    #     print(model_file)
-    # pytorch_cnn_test(model, model_file=model_file)
-    #pytorch_cnn_classify(model, top_k=5, model_file=model_file, os_systeem="Windows")
+    #pytorch_cnn_train(model, num_epochs=30)
+    model_file = 'model_9'
+    #for i in range(29):
+    #    model_file = 'model_'+str(i)
+    #    print(model_file)
+    #    pytorch_cnn_test(model, model_file=model_file)
+    pytorch_cnn_classify(model, top_k=3, model_file=model_file, os_systeem="MacOs")
 
 
 if __name__ == "__main__":
