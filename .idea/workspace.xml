@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" beforeDir="false" afterPath="$PROJECT_DIR$/predictions/predictions_ranked_weighted.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.torch_cnn">
+  <component name="RunManager" selected="Python.prediction_vote">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="AML_G11" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -170,8 +168,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.torch_cnn" />
         <item itemvalue="Python.prediction_vote" />
+        <item itemvalue="Python.torch_cnn" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -188,13 +186,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00050" summary=".">
-      <created>1607353861824</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1607353861825</updated>
     </task>
     <task id="LOCAL-00051" summary="Added option to get top-n labels when classifying">
       <created>1607360982187</created>
@@ -532,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607621827577</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Gave my own model a last try with batch normalisation, 30 epochs">
+      <created>1607699991409</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1607699991410</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +571,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Voted predictions using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_mobilenetv2_25&quot;, &quot;predictions_squeezenet_org_7&quot;" />
     <MESSAGE value="Set it to ranking" />
     <MESSAGE value="Weighted ranked predictions using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
@@ -598,6 +595,7 @@
     <MESSAGE value="Small mistake fixed" />
     <MESSAGE value="Weighted ranking with: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
     <MESSAGE value="Added naming option for save file in train function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added naming option for save file in train function" />
+    <MESSAGE value="Gave my own model a last try with batch normalisation, 30 epochs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gave my own model a last try with batch normalisation, 30 epochs" />
   </component>
 </project>
