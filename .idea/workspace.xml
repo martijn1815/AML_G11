@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
-    </list>
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -187,20 +184,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00055" summary="Added option to get top-n labels when classifying">
-      <created>1607363529586</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1607363529586</updated>
-    </task>
-    <task id="LOCAL-00056" summary=".">
-      <created>1607432393197</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1607432393197</updated>
     </task>
     <task id="LOCAL-00057" summary="Added prediction ranking, works with variable top_k size">
       <created>1607435333258</created>
@@ -531,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607700716254</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Voting using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_resnet101_aug_4_FIXED&quot;, &quot;predictions_augmented_mobilenet_25&quot;, &quot;predictions_mobilenet_vertflip_11&quot;, &quot;predictions_resnet34_frozen_19&quot;, &quot;predictions_squeezenet_org_7&quot;, &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;">
+      <created>1607701578310</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1607701578310</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;">
+      <created>1607701718785</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1607701718785</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,8 +569,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Freezed fully connected layers for squeezenet except the last 2" />
-    <MESSAGE value="Freezed fully connected layers for mobilenet except the last 2" />
     <MESSAGE value="Took the load data out of the epoch loop as this was not correct" />
     <MESSAGE value="Changed scale_transform to the new one in the classify function" />
     <MESSAGE value="put scale transform infunction, so when changed it is changed for all" />
@@ -597,6 +592,8 @@
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top5&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top5&quot;, &quot;predictions_resnet34_freeze_org_19_top5&quot;, &quot;predictions_squeezenet_7_top3&quot;" />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot;" />
+    <MESSAGE value="Voting using: &quot;predictions_resnet101_org_9&quot;, &quot;predictions_resnet101_aug_4_FIXED&quot;, &quot;predictions_augmented_mobilenet_25&quot;, &quot;predictions_mobilenet_vertflip_11&quot;, &quot;predictions_resnet34_frozen_19&quot;, &quot;predictions_squeezenet_org_7&quot;, &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;" />
   </component>
 </project>
