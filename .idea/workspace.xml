@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -186,20 +184,6 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
-    </task>
-    <task id="LOCAL-00060" summary=".">
-      <created>1607439471180</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1607439471181</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Set test data to validation data">
-      <created>1607441743608</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1607441743608</updated>
     </task>
     <task id="LOCAL-00062" summary=",">
       <created>1607443251695</created>
@@ -530,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1607706532665</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mnasnet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot;">
+      <created>1607712070761</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1607712070763</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mnasnet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;">
+      <created>1607712151706</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1607712151706</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,8 +569,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="put scale transform infunction, so when changed it is changed for all" />
-    <MESSAGE value="Changed labels from 1-80 to 0-79 while running and back when writing the predictions" />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;" />
     <MESSAGE value="Added load_train_validate_date_2 to the test function" />
     <MESSAGE value="Froze the feature layers of alexnet" />
@@ -596,6 +592,8 @@
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot; &quot;predictions_alexnet_5&quot;, &quot;predictions_wideResNet_3&quot;" />
     <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot;" />
     <MESSAGE value="Wanted to test my last version of my own model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Wanted to test my last version of my own model" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mnasnet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;, &quot;predictions_resnet34_freeze_org_19_top3&quot;, &quot;predictions_squeezenet_7_top3&quot;, &quot;alexnet_top3&quot;" />
+    <MESSAGE value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mnasnet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weighted ranking using: &quot;predictions_resnet101_org_9_top3&quot;, &quot;predictions_resnet101_aug_4_top3&quot;, &quot;predictions_augmented_mobilenet_25_top3&quot;, &quot;predictions_mnasnet_25_top3&quot;, &quot;predictions_mobilenet_vertflip_11_top3&quot;" />
   </component>
 </project>
