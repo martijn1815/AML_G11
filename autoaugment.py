@@ -2,6 +2,8 @@ from PIL import Image, ImageEnhance, ImageOps
 import numpy as np
 import random
 
+### this code is used to get imagenetpolicy in the data transformation, its copied from https://github.com/DeepVoltaire/AutoAugment/blob/master/autoaugment.py
+### Not our code
 
 class ImageNetPolicy(object):
     """ Randomly choose one of the best 24 Sub-policies on ImageNet.
