@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0f84fd-e534-406b-a569-92c94654c75a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_vote.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_vote.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torch_cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/torch_cnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/densenet_reserve.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inceptionv3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook_jop.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +189,7 @@
       <workItem from="1607198041410" duration="2794000" />
       <workItem from="1607253680239" duration="7323000" />
       <workItem from="1607339402153" duration="5348000" />
+      <workItem from="1607887196615" duration="275000" />
     </task>
     <task id="LOCAL-00067" summary="Added overlap for top_k (k&gt;1)">
       <created>1607444814399</created>

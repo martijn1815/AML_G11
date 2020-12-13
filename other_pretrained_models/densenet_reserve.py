@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-File:       torch_cnn.py
+File:       Densenet_reserve.py
 Author:     AML Project Group 11
 Date:       November 2020
 """
@@ -24,7 +24,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 
 import torchvision.models as models
-
+from collections import OrderedDict
 
 class DatasetTorch(Dataset):
     """
@@ -135,29 +135,6 @@ def load_train_validate_data_2(csv_file, root_dir, batch_size, valid_size=100, e
     :return train_loader:   pytorch dataloader
             val_loader:     pytorch dataloader
     """
-
-
-    # scale_transform = transforms.Compose([transforms.ToPILImage(),
-    #                                       transforms.Resize(224),
-    #                                       transforms.CenterCrop(224),
-    #                                       transforms.ToTensor(),
-    #                                       transforms.Normalize((0.485, 0.456, 0.406),
-    #                                                            (0.229, 0.224, 0.225))])
-    #
-    # random_transform = transforms.Compose([transforms.ToPILImage(),
-    #                                        transforms.RandomCrop(64, padding=4),
-    #                                        transforms.Resize(224),
-    #                                        transforms.CenterCrop(224),
-    #                                        transforms.ColorJitter(0,0,0,0),
-    #                                        transforms.ToTensor(),
-    #                                        transforms.Normalize((0.485, 0.456, 0.406),
-    #                                                             (0.229, 0.224, 0.225))])
-    # transformed_dataset = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=random_transform)
-    # if extra == True:
-    #     original_data_set = DatasetTorch(csv_file=csv_file, root_dir=root_dir, transform=scale_transform)
-    #     data_set = torch.utils.data.ConcatDataset([transformed_dataset, original_data_set])
-    # else:
-    #     data_set = transformed_dataset
 
     train_transforms = transforms.Compose([transforms.ToPILImage(),
                                           transforms.RandomRotation(30),
@@ -427,50 +404,11 @@ def main(argv):
     :param argv:
     """
     ''' Define model '''
-    # Martijn's CNN:
-    # model = Net()
-
-    # Squeezenet:
-    # model = models.squeezenet1_0(pretrained=True)
-    # model.classifier[1] = nn.Conv2d(512, 81, kernel_size=(1, 1), stride=(1, 1))
-
-    # ResNet:
-    #model = models.resnet101(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
-
-    # Wide ResNet:
-    #model = models.wide_resnet101_2(pretrained=True)
-    #model.fc = nn.Linear(2048, 81, bias=True)
-
-    # Mobilenet V2:
-    # model = models.mobilenet_v2(pretrained=True)
-    # model.classifier[1] = nn.Linear(1280, 81, bias=True)
-
-    # Alexnet:
-    #model = models.alexnet(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
-
-    # Mnasnet:
-    #model = models.mnasnet1_0(pretrained=True)
-    #model.classifier[1] = nn.Linear(1280, 81, bias=True)
-
-    # VGG19:
-    #model = models.vgg19_bn(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
-
-    # VGG16:
-    #model = models.vgg16(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
-
-    # Inception V3:
-    #model = models.inception_v3(pretrained=True)
-    #model.classifier[6] = nn.Linear(4096, 81, bias=True)
-
     #densenet
     model = models.densenet161(pretrained = True)
     # for param in model.parameters():
     #     param.requires_grad = False
-    from collections import OrderedDict
+
     model.classifier = nn.Sequential(OrderedDict([
                           ('fc1', nn.Linear(2208, 500)),
                           ('relu', nn.ReLU()),
