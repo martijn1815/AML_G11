@@ -2,9 +2,7 @@
 """
 File:       torch_cnn.py
 Author:     AML Project Group 11
-Date:       November 2020
-
-Based on pytorch tutorial: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
+Date:       December 2020
 """
 
 import sys
